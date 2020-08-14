@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Hello World</title>
-    <url>/2020/08/14/hello-world/</url>
+    <url>//4a17b156.html</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <p>​      <a id="more"></a></p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
@@ -21,18 +21,22 @@
   </entry>
   <entry>
     <title>《影响力》笔记</title>
-    <url>/2020/08/20/%E5%BD%B1%E5%93%8D%E5%8A%9B/</url>
+    <url>//efb85c64.html</url>
     <content><![CDATA[<blockquote>
 <p>人和动物一样有模式化反应,对固定的特征刺激做出特定反应(即使不合 理性)</p>
 <p>这种自动行为模式让人们在极端复杂的社会环境中,精力有限的条件下,能够更省力的做出不错的决策</p>
+<p>因此可以利用人们心中死板的范式,让对方顺从.</p>
 </blockquote>
-<ol>
+<h3 id="摘抄"><a href="#摘抄" class="headerlink" title="摘抄:"></a>摘抄:</h3><ol>
 <li>我们在要别人帮忙时,要是能给一个理由,成功的概率会更大</li>
-<li></li>
+<li>对比原理: 第二样东西和第一样东西有相当的不同,我们会感觉区别会更大<a id="more"></a></li>
+<li>6个最基本的影响他人的原理: 一致、权威、互惠、喜好、社会认同、稀缺</li>
+<li>等</li>
+<li>等</li>
+<li>等</li>
+<li>等</li>
 </ol>
-<a id="more"></a>
-
-]]></content>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h3>]]></content>
       <categories>
         <category>读书笔记</category>
         <category>摘抄</category>
