@@ -95,9 +95,9 @@
       </tags>
   </entry>
   <entry>
-    <title>python数据分析与机器学习实战</title>
+    <title>Git学习笔记</title>
     <url>//d239c418.html</url>
-    <content><![CDATA[<h1 id="Git的基本使用方法"><a href="#Git的基本使用方法" class="headerlink" title="Git的基本使用方法"></a>Git的基本使用方法</h1><h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h2><p>    <code>git init</code>  初始化一个空的Git仓库</p>
+    <content><![CDATA[<h1 id="Git学习笔记"><a href="#Git学习笔记" class="headerlink" title="Git学习笔记"></a>Git学习笔记</h1><h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h2><p>    <code>git init</code>  初始化一个空的Git仓库</p>
 <p>    <code>git add filename</code>  添加文件到git暂存区</p>
 <p>    <code>git commit -m &quot;提交描述&quot;</code> 把暂存区的文件提交 </p>
 <p>    <code>git status</code>   查看工作目录,暂存区和版本库的区别状态</p>
