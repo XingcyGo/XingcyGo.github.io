@@ -23,20 +23,21 @@
     var CONFIG = {"hostname":"loveran.me","root":"/","scheme":"Gemini","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"path":"./public/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="Git学习笔记版本控制    git init  初始化一个空的Git仓库     git add filename  添加文件到git暂存区     git commit -m &quot;提交描述&quot; 把暂存区的文件提交      git status   查看工作目录,暂存区和版本库的区别状态 ​    git diff  查看文件差异 比较的是上次git add与当前的区别 ​">
+  <meta name="description" content="Matplotlib使用基本用法导入模块matplotlib.pyplot和numpy 12import matplotlib.pyplot as pltimport numpy as np  定义窗口并画图 123456789101112x &#x3D; np.linspace(-3, 3, 50)  y &#x3D; x**2plt.figure(num&#x3D;3, figsize&#x3D;(8, 5))   # 生成一个画板">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git学习笔记">
+<meta property="og:title" content="Matplotlib使用">
 <meta property="og:url" content="https://loveran.me/d239c418.html">
 <meta property="og:site_name" content="llario的博客&#96;">
-<meta property="og:description" content="Git学习笔记版本控制    git init  初始化一个空的Git仓库     git add filename  添加文件到git暂存区     git commit -m &quot;提交描述&quot; 把暂存区的文件提交      git status   查看工作目录,暂存区和版本库的区别状态 ​    git diff  查看文件差异 比较的是上次git add与当前的区别 ​">
+<meta property="og:description" content="Matplotlib使用基本用法导入模块matplotlib.pyplot和numpy 12import matplotlib.pyplot as pltimport numpy as np  定义窗口并画图 123456789101112x &#x3D; np.linspace(-3, 3, 50)  y &#x3D; x**2plt.figure(num&#x3D;3, figsize&#x3D;(8, 5))   # 生成一个画板">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://loveran.me/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/0.jpg">
+<meta property="og:image" content="https://loveran.me/matplotlib%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/5Vfd6AY.png">
+<meta property="og:image" content="https://loveran.me/matplotlib%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Xt03c7u.png">
 <meta property="article:published_time" content="2020-11-28T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-11-29T11:02:41.318Z">
+<meta property="article:modified_time" content="2020-12-05T14:01:41.817Z">
 <meta property="article:author" content="Ilario">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://loveran.me/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/0.jpg">
+<meta name="twitter:image" content="https://loveran.me/matplotlib%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/5Vfd6AY.png">
 
 
 <link rel="canonical" href="https://loveran.me/d239c418.html">
@@ -52,7 +53,7 @@
   };
 </script>
 
-  <title>Git学习笔记 | llario的博客`</title>
+  <title>Matplotlib使用 | llario的博客`</title>
   
 
 
@@ -203,7 +204,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">Git学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="nav-number">1.1.</span> <span class="nav-text">版本控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93-GitHub"><span class="nav-number">1.2.</span> <span class="nav-text">使用远程仓库(GitHub)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8B%E5%BA%93"><span class="nav-number">1.2.1.</span> <span class="nav-text">为本地仓库添加远程库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%85%8B%E9%9A%86"><span class="nav-number">1.2.2.</span> <span class="nav-text">从远程仓库克隆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.2.3.</span> <span class="nav-text">连接协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86"><span class="nav-number">1.3.</span> <span class="nav-text">分支管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">分支管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86%E7%AD%96%E7%95%A5"><span class="nav-number">1.3.2.</span> <span class="nav-text">分支管理策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bug%E5%88%86%E6%94%AF"><span class="nav-number">1.3.3.</span> <span class="nav-text">Bug分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Feature%E5%88%86%E6%94%AF"><span class="nav-number">1.3.4.</span> <span class="nav-text">Feature分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E4%BA%BA%E5%8D%8F%E4%BD%9C"><span class="nav-number">1.3.5.</span> <span class="nav-text">多人协作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rebase"><span class="nav-number">1.3.6.</span> <span class="nav-text">Rebase</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86"><span class="nav-number">1.4.</span> <span class="nav-text">标签管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8GitHub%E4%B8%8A%E6%93%8D%E4%BD%9C"><span class="nav-number">1.5.</span> <span class="nav-text">在GitHub上操作:</span></a></li></ol></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Matplotlib%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">Matplotlib使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E5%AD%90%E5%9B%BE"><span class="nav-number">1.2.</span> <span class="nav-text">绘制子图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E4%BE%8B%E5%92%8C%E6%A0%87%E6%B3%A8"><span class="nav-number">1.3.</span> <span class="nav-text">图例和标注</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%84%E7%B1%BB%E5%9B%BE%E5%BD%A2"><span class="nav-number">1.4.</span> <span class="nav-text">各类图形</span></a></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -226,7 +227,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -281,7 +282,7 @@
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Git学习笔记
+          Matplotlib使用
         </h1>
 
         <div class="post-meta">
@@ -290,22 +291,32 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-11-29 00:00:00 / 修改时间：19:02:41" itemprop="dateCreated datePublished" datetime="2020-11-29T00:00:00+08:00">2020-11-29</time>
+              <time title="创建时间：2020-11-29 00:00:00" itemprop="dateCreated datePublished" datetime="2020-11-29T00:00:00+08:00">2020-11-29</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-05 22:01:41" itemprop="dateModified" datetime="2020-12-05T22:01:41+08:00">2020-12-05</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/matplotlib/" itemprop="url" rel="index"><span itemprop="name">matplotlib</span></a>
                 </span>
             </span>
 
           
-            <span id="/d239c418.html" class="post-meta-item leancloud_visitors" data-flag-title="Git学习笔记" title="阅读次数">
+            <span id="/d239c418.html" class="post-meta-item leancloud_visitors" data-flag-title="Matplotlib使用" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="far fa-eye"></i>
               </span>
@@ -331,14 +342,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.3k</span>
+              <span>2.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -348,124 +359,56 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="Git学习笔记"><a href="#Git学习笔记" class="headerlink" title="Git学习笔记"></a>Git学习笔记</h1><h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h2><p>    <code>git init</code>  初始化一个空的Git仓库</p>
-<p>    <code>git add filename</code>  添加文件到git暂存区</p>
-<p>    <code>git commit -m &quot;提交描述&quot;</code> 把暂存区的文件提交 </p>
-<p>    <code>git status</code>   查看工作目录,暂存区和版本库的区别状态</p>
-<p>​    <code>git diff</code>  查看文件差异 比较的是上次<code>git add</code>与当前的区别</p>
-<p>​    <code>git diff HEAD -- readme.txt </code>  查看工作区的readme和版本库里的readme的区别</p>
-<p>​    <code>git reset --hard commit_id</code> 重置到某个提交版本</p>
-<p>​    <code>git log</code>  查看<code>HEAD</code>及之前版本的提交历史 <code>--pretty=oneline</code> 参数使简洁</p>
-<ul>
-<li><code>HEAD</code>指向当前版本 <code>git reset --hard commit_id</code>回到历史版本或者把<code>commit_id替换</code>用<code>HEAD^</code>替换掉来代表前一个版本,<code>HEAD^^</code>前前一个,<code>HEAD~100</code>前一百个</li>
-</ul>
-<p>​    <code>git reflog</code> 查看所有的命令历史  回退后还可以找到之后版本的commit id重置到之后的版本里</p>
-<p>​    <code>git reset HEAD &lt;file&gt;</code> 把暂存区的修改撤销掉（unstage），重新放回工作区(丢弃暂存区修改,保留工作区修改)</p>
-<p>​    <code>git restore filname</code> 把readme撤回到暂存区的状态,不在暂存区就撤回到版本库的状态(丢弃工作区的更改)</p>
-<p>   <code>git rm</code>  从暂存区删除工作目录中已经删除掉的文件</p>
-<p>  <code>git checkout -- filename</code>  从暂存区恢复工作目录中误删除的文件</p>
-<ul>
-<li>命令中的<code>--</code>很重要，没有<code>--</code>，就变成了“切换到另一个分支”的命令</li>
-</ul>
-<h2 id="使用远程仓库-GitHub"><a href="#使用远程仓库-GitHub" class="headerlink" title="使用远程仓库(GitHub)"></a>使用远程仓库(GitHub)</h2><h3 id="为本地仓库添加远程库"><a href="#为本地仓库添加远程库" class="headerlink" title="为本地仓库添加远程库"></a>为本地仓库添加远程库</h3><ul>
-<li><p>创建并设置SSH连接</p>
-</li>
-<li><p>GitHub 创建新仓库</p>
-</li>
-<li><p>git remote add origin <a target="_blank" rel="noopener" href="https://github.com/llario/learnGit.git">https://github.com/llario/learnGit.git</a> (添加远程库,取名origin)</p>
-</li>
-<li><p>git push -u origin master   把本地库的内容推送到远程，用<code>git push</code>命令，实际上是把当前分支<code>master</code>推送到远程。</p>
-<p>由于远程库是空的，我们第一次推送<code>master</code>分支时，加上了<code>-u</code>参数，Git不但会把本地的<code>master</code>分支内容推送的远程新的<code>master</code>分支，还会把本地的<code>master</code>分支和远程的<code>master</code>分支关联起来，在以后的推送或者拉取时就可以简化命令。</p>
-</li>
-<li><p><code>git push origin master</code>  把本地<code>master</code>分支的最新修改推送至GitHub</p>
-</li>
-</ul>
-<h3 id="从远程仓库克隆"><a href="#从远程仓库克隆" class="headerlink" title="从远程仓库克隆"></a>从远程仓库克隆</h3><ul>
-<li>在GitHub上创建远程仓库</li>
-<li>用<code>git clone git@github.com:llario/learnGit.git </code> 克隆远程仓库</li>
-</ul>
-<h3 id="连接协议"><a href="#连接协议" class="headerlink" title="连接协议"></a>连接协议</h3><p>SSH 速度快</p>
-<p>HTTPS 速度慢 需要输入口令</p>
-<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><h3 id="分支管理-1"><a href="#分支管理-1" class="headerlink" title="分支管理"></a>分支管理</h3><p><code>git branch</code>  查看分支</p>
-<p><code>git branch name</code>  创建分支</p>
-<p><code>git swich name</code>  切换分支</p>
-<p><code>git swich -c name</code> 创建加切换分支</p>
-<p><code>git merge name</code> 合并某个分支到当前分支</p>
-<ul>
-<li><code>git merge --no-ff -m &quot;merge with no-ff&quot; dev</code></li>
-<li>合并时不使用<code>Fast forward</code>模式, 可以保留分支的历史记录</li>
-</ul>
-<p><code>git branch -d name</code> 删除分支</p>
-<ul>
-<li><p>HEAD  默认指向master master指向提交 </p>
-</li>
-<li><p>切换分支时 HEAD指向分支 分支指向提交 更新版本时master不变 HEAD指向的分支向前移动</p>
-</li>
-<li><p>Fast-forward : 快进模式合并 直接把master指向分支</p>
-</li>
-<li><p>Git 合并出现冲突无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。</p>
-<p>Git会把冲突的部分提示出来,需要进行手动修改,然后提交, 合并后的内容就是手动修改后的内容</p>
-<p>用<code>git log --graph</code>命令可以看到分支合并图。<code>git log --graph --pretty=oneline --abbrev-commit</code></p>
-</li>
-<li><p>二进制文件冲突只能二选一</p>
-</li>
-</ul>
-<h3 id="分支管理策略"><a href="#分支管理策略" class="headerlink" title="分支管理策略"></a>分支管理策略</h3><p><code>master</code>分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；</p>
-<p>那在哪干活呢？干活都在<code>dev</code>分支上，也就是说，<code>dev</code>分支是不稳定的，到某个时候，比如1.0版本发布时，再把<code>dev</code>分支合并到<code>master</code>上，在<code>master</code>分支发布1.0版本；</p>
-<p>你和你的小伙伴们每个人都在<code>dev</code>分支上干活，每个人都有自己的分支，时不时地往<code>dev</code>分支上合并就可以了。</p>
-<p>所以，团队合作的分支看起来就像这样：</p>
-<p><img data-src="Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/0.jpg" alt="git-br-policy"></p>
-<p>合并分支时，加上<code>--no-ff</code>参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而<code>fast forward</code>合并就看不出来曾经做过合并。</p>
-<h3 id="Bug分支"><a href="#Bug分支" class="headerlink" title="Bug分支"></a>Bug分支</h3><p><code>git stash</code>  把当前分支工作目录和暂存区的状态冻结起来 以便于转换分支工作完成后恢复这个分支的状态</p>
-<p><code>git stash list</code>  列出当前存过的状态</p>
-<p><code>git stash apply stash@&#123;0&#125;</code>  恢复到某个状态</p>
-<p><code>git stash drop stash@&#123;0&#125;</code>   删除某个保存的状态</p>
-<p><code>git stash pop stash@&#123;0&#125;</code> 恢复到某个状态并删除保存的这个状态</p>
-<p><code>git cherry-pick commit_id</code>  复制一个特定的提交到当前分支(修复bug)</p>
-<ul>
-<li><p>修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；</p>
-<p>当手头工作没有完成时，先把工作现场<code>git stash</code>一下，然后去修复bug，修复后，再<code>git stash pop</code>，回到工作现场；</p>
-<p>在master分支上修复的bug，想要合并到当前dev分支，可以用<code>git cherry-pick &lt;commit&gt;</code>命令，把bug提交的修改“复制”到当前分支，避免重复劳动。</p>
-</li>
-</ul>
-<h3 id="Feature分支"><a href="#Feature分支" class="headerlink" title="Feature分支"></a>Feature分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d featurename</span><br></pre></td></tr></table></figure>
+        <h1 id="Matplotlib使用"><a href="#Matplotlib使用" class="headerlink" title="Matplotlib使用"></a>Matplotlib使用</h1><h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>导入模块matplotlib.pyplot和numpy</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
 
-<p>假如分支还没有被合并，如果删除，将丢失掉修改，如果要强行删除，需要使用大写的<code>-D</code>参数。</p>
-<h3 id="多人协作"><a href="#多人协作" class="headerlink" title="多人协作"></a>多人协作</h3><p><code>git remote </code> 查看远程库信息  参数-v更加详细  分别显示可以抓取和推送的仓库</p>
-<p><code>git push origin master</code> 把分支master推送到远程仓库 也可以是别的分支</p>
-<ul>
-<li><code>master</code>分支是主分支，因此要时刻与远程同步；</li>
-<li><code>dev</code>分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；</li>
-<li>bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；</li>
-<li>feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。</li>
+<p>定义窗口并画图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">x = np.linspace(<span class="number">-3</span>, <span class="number">3</span>, <span class="number">50</span>)  </span><br><span class="line">y = x**<span class="number">2</span></span><br><span class="line">plt.figure(num=<span class="number">3</span>, figsize=(<span class="number">8</span>, <span class="number">5</span>))   <span class="comment"># 生成一个画板 编号为3,尺寸是(8,5)</span></span><br><span class="line">plt.plot(x, y, color=<span class="string">&#x27;red&#x27;</span>, linewidth=<span class="number">1.0</span>, linestyle=<span class="string">&#x27;--&#x27;</span>) <span class="comment"># 画关于xy的图像,颜色为red 线宽为1.0,样式是&#x27;--&#x27;</span></span><br><span class="line">plt.xlim((<span class="number">-1</span>, <span class="number">2</span>))  </span><br><span class="line">plt.ylim((<span class="number">-2</span>, <span class="number">3</span>))  <span class="comment"># 设定y的坐标轴范围</span></span><br><span class="line">plt.xlabel(<span class="string">&#x27;I am x&#x27;</span>)  </span><br><span class="line">plt.ylabel(<span class="string">&#x27;I am y&#x27;</span>)  <span class="comment"># 设定y坐标轴名称</span></span><br><span class="line">new_ticks = np.linspace(<span class="number">-1</span>, <span class="number">2</span>, <span class="number">5</span>)  </span><br><span class="line">plt.xticks(new_ticks)  <span class="comment"># 重新设定x轴的刻度</span></span><br><span class="line">plt.yticks([<span class="number">-2</span>, <span class="number">-1.8</span>, <span class="number">-1</span>, <span class="number">1.22</span>, <span class="number">3</span>],[<span class="string">r&#x27;$really\ bad$&#x27;</span>, <span class="string">r&#x27;$bad$&#x27;</span>, <span class="string">r&#x27;$normal$&#x27;</span>, <span class="string">r&#x27;$good$&#x27;</span>, <span class="string">r&#x27;$really\ good$&#x27;</span>])  <span class="comment"># 设点y轴的刻度并标定名称</span></span><br><span class="line">plt.show()  <span class="comment"># 显示图像</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>    
+
+<p>设置边框</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ax = plt.gca() 获得坐标轴对象</span><br><span class="line">ax.spines[‘right’].set_color(‘none’)</span><br><span class="line">ax.spines[‘top’].set_color(‘none’)   <span class="comment">#  将右边和上面的边框隐藏</span></span><br><span class="line">ax.xaxis.set_ticks_position(‘bottom’) </span><br><span class="line">ax.yaxis.set_ticks_position(‘left’)  <span class="comment">#设定x轴的刻度显示在下面,y轴的刻度显示在左边</span></span><br><span class="line">ax.spines[‘bottom’].set_position((‘data’, <span class="number">0</span>)) <span class="comment"># data表示通过值来设置x轴的位置，将x轴绑定在y=0的位置</span></span><br><span class="line">ax.spines[‘left’].set_position((‘data’, <span class="number">0</span>))<span class="comment"># 设定x,y轴在(0,0)轴相交</span></span><br><span class="line"><span class="comment"># 或者 ax.spines[&#x27;left&#x27;].set_position((&#x27;axes&#x27;,0.5)) axes表示以百分比的形式设置轴的位置，即将y轴绑定在x轴50%的位置，也就是x轴的中点</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="绘制子图"><a href="#绘制子图" class="headerlink" title="绘制子图"></a>绘制子图</h2><p>在matplotlib中，<code>整个图像</code>为一个<code>Figure</code>对象。在Figure对象中可以包含一个或者多个<code>Axes</code>对象。每个Axes(ax)对象都是一个拥有自己坐标系统的<strong>绘图区域</strong>。所属关系如下：</p>
+<p><img data-src="matplotlib%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/5Vfd6AY.png" alt="img"></p>
+<p>一个”Figure”意味着用户交互的整个窗口。在这个figure中容纳着”subplots”。</p>
+<p>当我们调用plot时，matplotlib会调用<code>gca()</code>获取当前的axes绘图区域，而且<code>gca</code>反过来调用<code>gcf()</code>来获得当前的figure。如果figure为空，它会自动调用<code>figure()</code>生成一个figure, 严格的讲，是生成<code>subplots(111)</code>。</p>
+<p><img data-src="matplotlib%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Xt03c7u.png" alt="img"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>) <span class="comment"># 会将原始的图像切割成2个子图像，是2行1列，并将现在的操作位置转到第一个子图上，这样便实现了绘制子图的方法。 。(第一个参数代表子图的行数；第二个参数代表该行图像的列数； 第三个参数代表每行的第几个图像。)</span></span><br><span class="line">plt.plot(...)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>) <span class="comment"># 将现在的操作位置转到第二个子图上，开始绘制第二个子图。</span></span><br><span class="line">plt.plot(...)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots(<span class="number">2</span>,<span class="number">2</span>)  <span class="comment"># 其中参数分别代表子图的行数和列数，一共有 2x2 个图像。函数返回一个figure图像和一个子图ax的array列表。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="图例和标注"><a href="#图例和标注" class="headerlink" title="图例和标注"></a>图例和标注</h2><ul>
+<li>1.添加图例：plt.legend()</li>
+<li>2.画点：plt.scatter()</li>
+<li>3.添加标注：plt.annotate()</li>
+<li>4.添加注释：plt.text()</li>
 </ul>
-<p>多人协作的工作模式通常是这样：</p>
-<ol>
-<li><p>首先，可以试图用<code>git push origin &lt;branch-name&gt;</code>推送自己的修改；</p>
+<p>设定坐标轴特定刻度值名称</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">new_ticks = np.linspace(<span class="number">-1</span>, <span class="number">2</span>, <span class="number">5</span>)  </span><br><span class="line">plt.xticks(new_ticks)  <span class="comment"># 重新设定x轴的刻度</span></span><br><span class="line">plt.yticks([<span class="number">-2</span>, <span class="number">-1.8</span>, <span class="number">-1</span>, <span class="number">1.22</span>, <span class="number">3</span>],[<span class="string">r&#x27;$really\ bad$&#x27;</span>, <span class="string">r&#x27;$bad$&#x27;</span>, <span class="string">r&#x27;$normal$&#x27;</span>, <span class="string">r&#x27;$good$&#x27;</span>, <span class="string">r&#x27;$really\ good$&#x27;</span>])  <span class="comment"># 设点y轴的刻度并标定名称</span></span><br></pre></td></tr></table></figure>
+
+<p>添加图例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">l1 = plt.plot(x, y1, label=<span class="string">&#x27;linear line&#x27;</span>)</span><br><span class="line">l2 = plt.plot(x, y2, color=<span class="string">&#x27;red&#x27;</span>, linewidth=<span class="number">1.0</span>,linestyle=<span class="string">&#x27;--&#x27;</span>, label=<span class="string">&#x27;square line&#x27;</span>)</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;&#x27;</span>) <span class="comment">#best 自动分配 还可以指定&#x27;upper right&#x27; &#x27;lower left&#x27;&#x27;center right&#x27;等组合 </span></span><br></pre></td></tr></table></figure>
+
+<p>Annotation 标注</p>
+<p>待续….</p>
+<h2 id="各类图形"><a href="#各类图形" class="headerlink" title="各类图形"></a>各类图形</h2><ul>
+<li><p>1.散点图：plt.scatter()</p>
 </li>
-<li><p>如果推送失败，则因为远程分支比你的本地更新，需要先用<code>git pull</code>试图合并；</p>
+<li><p>2.柱状图：plt.bar()</p>
 </li>
-<li><p>如果合并有冲突，则解决冲突，并在本地提交；</p>
+<li><p>3.等高线图：plt.contourf()</p>
 </li>
-<li><p>没有冲突或者解决掉冲突后，再用<code>git push origin &lt;branch-name&gt;</code>推送就能成功！</p>
-<p>如果<code>git pull</code>提示<code>no tracking information</code>，则说明本地分支和远程分支的链接关系没有创建，用命令<code>git branch --set-upstream-to &lt;branch-name&gt; origin/&lt;branch-name&gt;</code>。</p>
+<li><p>4.在等高线图中增加label：plt.clabel()</p>
 </li>
-</ol>
-<p>在本地创建和远程分支对应的分支，使用<code>git checkout -b branch-name origin/branch-name</code>，本地和远程分支的名称最好一致；</p>
-<p>建立本地分支和远程分支的关联，使用<code>git branch --set-upstream branch-name origin/branch-name</code>；</p>
-<p>从远程抓取分支，使用<code>git pull</code>，如果有冲突，要先处理冲突。</p>
-<h3 id="Rebase"><a href="#Rebase" class="headerlink" title="Rebase"></a>Rebase</h3><p>待更新</p>
-<h2 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h2><p>待更新</p>
-<h2 id="在GitHub上操作"><a href="#在GitHub上操作" class="headerlink" title="在GitHub上操作:"></a>在GitHub上操作:</h2><ul>
-<li>在GitHub上，可以任意Fork开源仓库；</li>
-<li>自己拥有Fork后的仓库的读写权限,clone到本地进行修改；</li>
-<li>把远程原作者的仓库【twbs/bootstrap】拉到本地，用Pull就行（Pull = Fetch+Merge）；</li>
-<li>本地使用Rebase；</li>
-<li>此时，本地【local/bootstrap】与远程原作者的仓库【twbs/bootstrap】就算是同步完了；</li>
-<li>在本地使用PushOrigin推送到自己Fork出来的库【my/bootstrap】就行了；</li>
-<li>最后，给原作者发送1个PullRequest的消息。</li>
-<li>可以推送pull request给官方仓库来贡献代码。</li>
+<li><p>5.矩阵画图：plt.imshow()</p>
+</li>
+<li><p>6.在随机矩阵图中增加colorbar：plt.colorbar()</p>
+</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">n &#x3D; 1024  # data size</span><br><span class="line">X &#x3D; np.random.normal(0, 1, n)  # 每一个点的X值  (随机生成)</span><br><span class="line">Y &#x3D; np.random.normal(0, 1, n)  # 每一个点的Y值</span><br><span class="line">T &#x3D; np.arctan2(Y, X)  # for color value</span><br><span class="line"></span><br><span class="line">plt.scatter(X, Y, s&#x3D;75, c&#x3D;T, alpha&#x3D;.5) # s表示size c表示color alpha表示透明值</span><br><span class="line"></span><br><span class="line">plt.xlim(-1.5, 1.5)</span><br><span class="line">plt.xticks(())  # ignore xticks 传入空值来隐藏x轴坐标刻度</span><br><span class="line">plt.ylim(-1.5, 1.5)</span><br><span class="line">plt.yticks(())  # ignore yticks</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -481,7 +424,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://loveran.me/d239c418.html" title="Git学习笔记">https://loveran.me/d239c418.html</a>
+    <a href="https://loveran.me/d239c418.html" title="Matplotlib使用">https://loveran.me/d239c418.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！
@@ -504,6 +447,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/d239c418.html" rel="next" title="Git学习笔记">
+                  Git学习笔记 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
       </footer>

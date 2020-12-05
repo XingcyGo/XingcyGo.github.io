@@ -220,7 +220,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -284,10 +284,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-11-29 00:00:00 / 修改时间：19:02:41" itemprop="dateCreated datePublished" datetime="2020-11-29T00:00:00+08:00">2020-11-29</time>
+              <time title="创建时间：2020-11-29 00:00:00" itemprop="dateCreated datePublished" datetime="2020-11-29T00:00:00+08:00">2020-11-29</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-05 22:01:16" itemprop="dateModified" datetime="2020-12-05T22:01:16+08:00">2020-12-05</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -342,125 +348,153 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Git学习笔记"><a href="#Git学习笔记" class="headerlink" title="Git学习笔记"></a>Git学习笔记</h1><h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h2><p>    <code>git init</code>  初始化一个空的Git仓库</p>
-<p>    <code>git add filename</code>  添加文件到git暂存区</p>
-<p>    <code>git commit -m &quot;提交描述&quot;</code> 把暂存区的文件提交 </p>
-<p>    <code>git status</code>   查看工作目录,暂存区和版本库的区别状态</p>
-<p>​    <code>git diff</code>  查看文件差异 比较的是上次<code>git add</code>与当前的区别</p>
-<p>​    <code>git diff HEAD -- readme.txt </code>  查看工作区的readme和版本库里的readme的区别</p>
-<p>​    <code>git reset --hard commit_id</code> 重置到某个提交版本</p>
-<p>​    <code>git log</code>  查看<code>HEAD</code>及之前版本的提交历史 <code>--pretty=oneline</code> 参数使简洁</p>
+          <h1 id="Git学习笔记"><a href="#Git学习笔记" class="headerlink" title="Git学习笔记"></a>Git学习笔记</h1><h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h2><p><code>git init</code>  初始化一个空的Git仓库</p>
+<p><code>git add filename</code>  添加文件到git暂存区</p>
+<p><code>git commit -m &quot;提交描述&quot;</code> 把暂存区的文件提交 </p>
+<p><code>git status</code>   查看工作目录,暂存区和版本库的区别状态</p>
+<p><code>git diff</code>  查看文件差异 比较的是上次<code>git add</code>与当前的区别</p>
+<p><code>git diff HEAD -- readme.txt </code>  查看工作区的readme和版本库里的readme的区别</p>
+<p><code>git reset --hard commit_id</code> 重置到某个提交版本</p>
+<p><code>git log</code>  查看<code>HEAD</code>及之前版本的提交历史 <code>--pretty=oneline</code> 参数使简洁</p>
 <ul>
 <li><code>HEAD</code>指向当前版本 <code>git reset --hard commit_id</code>回到历史版本或者把<code>commit_id替换</code>用<code>HEAD^</code>替换掉来代表前一个版本,<code>HEAD^^</code>前前一个,<code>HEAD~100</code>前一百个</li>
 </ul>
-<p>​    <code>git reflog</code> 查看所有的命令历史  回退后还可以找到之后版本的commit id重置到之后的版本里</p>
-<p>​    <code>git reset HEAD &lt;file&gt;</code> 把暂存区的修改撤销掉（unstage），重新放回工作区(丢弃暂存区修改,保留工作区修改)</p>
-<p>​    <code>git restore filname</code> 把readme撤回到暂存区的状态,不在暂存区就撤回到版本库的状态(丢弃工作区的更改)</p>
-<p>   <code>git rm</code>  从暂存区删除工作目录中已经删除掉的文件</p>
-<p>  <code>git checkout -- filename</code>  从暂存区恢复工作目录中误删除的文件</p>
-<ul>
-<li>命令中的<code>--</code>很重要，没有<code>--</code>，就变成了“切换到另一个分支”的命令</li>
-</ul>
-<h2 id="使用远程仓库-GitHub"><a href="#使用远程仓库-GitHub" class="headerlink" title="使用远程仓库(GitHub)"></a>使用远程仓库(GitHub)</h2><h3 id="为本地仓库添加远程库"><a href="#为本地仓库添加远程库" class="headerlink" title="为本地仓库添加远程库"></a>为本地仓库添加远程库</h3><ul>
-<li><p>创建并设置SSH连接</p>
-</li>
-<li><p>GitHub 创建新仓库</p>
-</li>
-<li><p>git remote add origin <a target="_blank" rel="noopener" href="https://github.com/llario/learnGit.git">https://github.com/llario/learnGit.git</a> (添加远程库,取名origin)</p>
-</li>
-<li><p>git push -u origin master   把本地库的内容推送到远程，用<code>git push</code>命令，实际上是把当前分支<code>master</code>推送到远程。</p>
-<p>由于远程库是空的，我们第一次推送<code>master</code>分支时，加上了<code>-u</code>参数，Git不但会把本地的<code>master</code>分支内容推送的远程新的<code>master</code>分支，还会把本地的<code>master</code>分支和远程的<code>master</code>分支关联起来，在以后的推送或者拉取时就可以简化命令。</p>
-</li>
-<li><p><code>git push origin master</code>  把本地<code>master</code>分支的最新修改推送至GitHub</p>
-</li>
-</ul>
-<h3 id="从远程仓库克隆"><a href="#从远程仓库克隆" class="headerlink" title="从远程仓库克隆"></a>从远程仓库克隆</h3><ul>
-<li>在GitHub上创建远程仓库</li>
-<li>用<code>git clone git@github.com:llario/learnGit.git </code> 克隆远程仓库</li>
-</ul>
-<h3 id="连接协议"><a href="#连接协议" class="headerlink" title="连接协议"></a>连接协议</h3><p>SSH 速度快</p>
-<p>HTTPS 速度慢 需要输入口令</p>
-<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><h3 id="分支管理-1"><a href="#分支管理-1" class="headerlink" title="分支管理"></a>分支管理</h3><p><code>git branch</code>  查看分支</p>
-<p><code>git branch name</code>  创建分支</p>
-<p><code>git swich name</code>  切换分支</p>
-<p><code>git swich -c name</code> 创建加切换分支</p>
-<p><code>git merge name</code> 合并某个分支到当前分支</p>
-<ul>
-<li><code>git merge --no-ff -m &quot;merge with no-ff&quot; dev</code></li>
-<li>合并时不使用<code>Fast forward</code>模式, 可以保留分支的历史记录</li>
-</ul>
-<p><code>git branch -d name</code> 删除分支</p>
-<ul>
-<li><p>HEAD  默认指向master master指向提交 </p>
-</li>
-<li><p>切换分支时 HEAD指向分支 分支指向提交 更新版本时master不变 HEAD指向的分支向前移动</p>
-</li>
-<li><p>Fast-forward : 快进模式合并 直接把master指向分支</p>
-</li>
-<li><p>Git 合并出现冲突无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。</p>
-<p>Git会把冲突的部分提示出来,需要进行手动修改,然后提交, 合并后的内容就是手动修改后的内容</p>
-<p>用<code>git log --graph</code>命令可以看到分支合并图。<code>git log --graph --pretty=oneline --abbrev-commit</code></p>
-</li>
-<li><p>二进制文件冲突只能二选一</p>
-</li>
-</ul>
-<h3 id="分支管理策略"><a href="#分支管理策略" class="headerlink" title="分支管理策略"></a>分支管理策略</h3><p><code>master</code>分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；</p>
-<p>那在哪干活呢？干活都在<code>dev</code>分支上，也就是说，<code>dev</code>分支是不稳定的，到某个时候，比如1.0版本发布时，再把<code>dev</code>分支合并到<code>master</code>上，在<code>master</code>分支发布1.0版本；</p>
-<p>你和你的小伙伴们每个人都在<code>dev</code>分支上干活，每个人都有自己的分支，时不时地往<code>dev</code>分支上合并就可以了。</p>
-<p>所以，团队合作的分支看起来就像这样：</p>
-<p><img data-src="Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/0.jpg" alt="git-br-policy"></p>
-<p>合并分支时，加上<code>--no-ff</code>参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而<code>fast forward</code>合并就看不出来曾经做过合并。</p>
-<h3 id="Bug分支"><a href="#Bug分支" class="headerlink" title="Bug分支"></a>Bug分支</h3><p><code>git stash</code>  把当前分支工作目录和暂存区的状态冻结起来 以便于转换分支工作完成后恢复这个分支的状态</p>
-<p><code>git stash list</code>  列出当前存过的状态</p>
-<p><code>git stash apply stash@&#123;0&#125;</code>  恢复到某个状态</p>
-<p><code>git stash drop stash@&#123;0&#125;</code>   删除某个保存的状态</p>
-<p><code>git stash pop stash@&#123;0&#125;</code> 恢复到某个状态并删除保存的这个状态</p>
-<p><code>git cherry-pick commit_id</code>  复制一个特定的提交到当前分支(修复bug)</p>
-<ul>
-<li><p>修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；</p>
-<p>当手头工作没有完成时，先把工作现场<code>git stash</code>一下，然后去修复bug，修复后，再<code>git stash pop</code>，回到工作现场；</p>
-<p>在master分支上修复的bug，想要合并到当前dev分支，可以用<code>git cherry-pick &lt;commit&gt;</code>命令，把bug提交的修改“复制”到当前分支，避免重复劳动。</p>
-</li>
-</ul>
-<h3 id="Feature分支"><a href="#Feature分支" class="headerlink" title="Feature分支"></a>Feature分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d featurename</span><br></pre></td></tr></table></figure>
+<p><code>git reflog</code> 查看所有的命令历史  回退后还可以找到之后版本的commit id重置到之后的版本里</p>
+<p><code>git reset HEAD &lt;file&gt;</code> 把暂存区的修改撤销掉（unstage），重新放回工作区(丢弃暂存区修改,保留工作区修改)</p>
+<p><code>git restore filname</code> 把readme撤回到暂存区的状态,不在暂存区就撤回到版本库的状态(丢弃工作区的更改)</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/d239c418.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
 
-<p>假如分支还没有被合并，如果删除，将丢失掉修改，如果要强行删除，需要使用大写的<code>-D</code>参数。</p>
-<h3 id="多人协作"><a href="#多人协作" class="headerlink" title="多人协作"></a>多人协作</h3><p><code>git remote </code> 查看远程库信息  参数-v更加详细  分别显示可以抓取和推送的仓库</p>
-<p><code>git push origin master</code> 把分支master推送到远程仓库 也可以是别的分支</p>
-<ul>
-<li><code>master</code>分支是主分支，因此要时刻与远程同步；</li>
-<li><code>dev</code>分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；</li>
-<li>bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；</li>
-<li>feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。</li>
-</ul>
-<p>多人协作的工作模式通常是这样：</p>
-<ol>
-<li><p>首先，可以试图用<code>git push origin &lt;branch-name&gt;</code>推送自己的修改；</p>
-</li>
-<li><p>如果推送失败，则因为远程分支比你的本地更新，需要先用<code>git pull</code>试图合并；</p>
-</li>
-<li><p>如果合并有冲突，则解决冲突，并在本地提交；</p>
-</li>
-<li><p>没有冲突或者解决掉冲突后，再用<code>git push origin &lt;branch-name&gt;</code>推送就能成功！</p>
-<p>如果<code>git pull</code>提示<code>no tracking information</code>，则说明本地分支和远程分支的链接关系没有创建，用命令<code>git branch --set-upstream-to &lt;branch-name&gt; origin/&lt;branch-name&gt;</code>。</p>
-</li>
-</ol>
-<p>在本地创建和远程分支对应的分支，使用<code>git checkout -b branch-name origin/branch-name</code>，本地和远程分支的名称最好一致；</p>
-<p>建立本地分支和远程分支的关联，使用<code>git branch --set-upstream branch-name origin/branch-name</code>；</p>
-<p>从远程抓取分支，使用<code>git pull</code>，如果有冲突，要先处理冲突。</p>
-<h3 id="Rebase"><a href="#Rebase" class="headerlink" title="Rebase"></a>Rebase</h3><p>待更新</p>
-<h2 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h2><p>待更新</p>
-<h2 id="在GitHub上操作"><a href="#在GitHub上操作" class="headerlink" title="在GitHub上操作:"></a>在GitHub上操作:</h2><ul>
-<li>在GitHub上，可以任意Fork开源仓库；</li>
-<li>自己拥有Fork后的仓库的读写权限,clone到本地进行修改；</li>
-<li>把远程原作者的仓库【twbs/bootstrap】拉到本地，用Pull就行（Pull = Fetch+Merge）；</li>
-<li>本地使用Rebase；</li>
-<li>此时，本地【local/bootstrap】与远程原作者的仓库【twbs/bootstrap】就算是同步完了；</li>
-<li>在本地使用PushOrigin推送到自己Fork出来的库【my/bootstrap】就行了；</li>
-<li>最后，给原作者发送1个PullRequest的消息。</li>
-<li>可以推送pull request给官方仓库来贡献代码。</li>
-</ul>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://loveran.me/d239c418.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ilario">
+      <meta itemprop="description" content="人生未有期,纵身锦浪里.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="llario的博客`">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/d239c418.html" class="post-title-link" itemprop="url">Matplotlib使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-29 00:00:00" itemprop="dateCreated datePublished" datetime="2020-11-29T00:00:00+08:00">2020-11-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-05 22:01:41" itemprop="dateModified" datetime="2020-12-05T22:01:41+08:00">2020-12-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/matplotlib/" itemprop="url" rel="index"><span itemprop="name">matplotlib</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/d239c418.html" class="post-meta-item leancloud_visitors" data-flag-title="Matplotlib使用" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/d239c418.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/d239c418.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Matplotlib使用"><a href="#Matplotlib使用" class="headerlink" title="Matplotlib使用"></a>Matplotlib使用</h1><h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>导入模块matplotlib.pyplot和numpy</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+
+<p>定义窗口并画图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">x = np.linspace(<span class="number">-3</span>, <span class="number">3</span>, <span class="number">50</span>)  </span><br><span class="line">y = x**<span class="number">2</span></span><br><span class="line">plt.figure(num=<span class="number">3</span>, figsize=(<span class="number">8</span>, <span class="number">5</span>))   <span class="comment"># 生成一个画板 编号为3,尺寸是(8,5)</span></span><br><span class="line">plt.plot(x, y, color=<span class="string">&#x27;red&#x27;</span>, linewidth=<span class="number">1.0</span>, linestyle=<span class="string">&#x27;--&#x27;</span>) <span class="comment"># 画关于xy的图像,颜色为red 线宽为1.0,样式是&#x27;--&#x27;</span></span><br><span class="line">plt.xlim((<span class="number">-1</span>, <span class="number">2</span>))  </span><br><span class="line">plt.ylim((<span class="number">-2</span>, <span class="number">3</span>))  <span class="comment"># 设定y的坐标轴范围</span></span><br><span class="line">plt.xlabel(<span class="string">&#x27;I am x&#x27;</span>)  </span><br><span class="line">plt.ylabel(<span class="string">&#x27;I am y&#x27;</span>)  <span class="comment"># 设定y坐标轴名称</span></span><br><span class="line">new_ticks = np.linspace(<span class="number">-1</span>, <span class="number">2</span>, <span class="number">5</span>)  </span><br><span class="line">plt.xticks(new_ticks)  <span class="comment"># 重新设定x轴的刻度</span></span><br><span class="line">plt.yticks([<span class="number">-2</span>, <span class="number">-1.8</span>, <span class="number">-1</span>, <span class="number">1.22</span>, <span class="number">3</span>],[<span class="string">r&#x27;$really\ bad$&#x27;</span>, <span class="string">r&#x27;$bad$&#x27;</span>, <span class="string">r&#x27;$normal$&#x27;</span>, <span class="string">r&#x27;$good$&#x27;</span>, <span class="string">r&#x27;$really\ good$&#x27;</span>])  <span class="comment"># 设点y轴的刻度并标定名称</span></span><br><span class="line">plt.show()  <span class="comment"># 显示图像</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/d239c418.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -564,138 +598,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/9b6a3ba2.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://loveran.me/e8a1470d.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Ilario">
-      <meta itemprop="description" content="人生未有期,纵身锦浪里.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="llario的博客`">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/e8a1470d.html" class="post-title-link" itemprop="url">书单</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-16 00:00:00" itemprop="dateCreated datePublished" datetime="2020-08-16T00:00:00+08:00">2020-08-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-27 17:39:01" itemprop="dateModified" datetime="2020-09-27T17:39:01+08:00">2020-09-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%B9%A6%E5%8D%95/" itemprop="url" rel="index"><span itemprop="name">书单</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%B9%A6%E5%8D%95/plan/" itemprop="url" rel="index"><span itemprop="name">plan</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/e8a1470d.html" class="post-meta-item leancloud_visitors" data-flag-title="书单" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/e8a1470d.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/e8a1470d.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>433</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>关于自己已经读过和准备读的书0.o</p>
-</blockquote>
-<p>《经济学原理》 – 马歇尔</p>
-<p><del>《少年维特的烦恼》–歌德</del></p>
-<p><del>《被讨厌的勇气》</del></p>
-<p>《把自己作为方法》–项飙</p>
-<p><del>《杀死一只知更鸟》</del></p>
-<p>《理解人性》–阿德勒</p>
-<p>《第五项修炼》– 圣吉</p>
-<p><del>《少有人走的路》– 斯科特 派克</del>     </p>
-<p>《自私的基因》– 理查德 道金斯
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/e8a1470d.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
