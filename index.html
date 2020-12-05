@@ -275,6 +275,127 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
+            <a href="/d239c418.html" class="post-title-link" itemprop="url">Matplotlib使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-03 00:00:00" itemprop="dateCreated datePublished" datetime="2020-12-03T00:00:00+08:00">2020-12-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-05 22:08:24" itemprop="dateModified" datetime="2020-12-05T22:08:24+08:00">2020-12-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/d239c418.html" class="post-meta-item leancloud_visitors" data-flag-title="Matplotlib使用" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/d239c418.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/d239c418.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Matplotlib使用"><a href="#Matplotlib使用" class="headerlink" title="Matplotlib使用"></a>Matplotlib使用</h1><h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>导入模块matplotlib.pyplot和numpy</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+
+<p>定义窗口并画图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">x = np.linspace(<span class="number">-3</span>, <span class="number">3</span>, <span class="number">50</span>)  </span><br><span class="line">y = x**<span class="number">2</span></span><br><span class="line">plt.figure(num=<span class="number">3</span>, figsize=(<span class="number">8</span>, <span class="number">5</span>))   <span class="comment"># 生成一个画板 编号为3,尺寸是(8,5)</span></span><br><span class="line">plt.plot(x, y, color=<span class="string">&#x27;red&#x27;</span>, linewidth=<span class="number">1.0</span>, linestyle=<span class="string">&#x27;--&#x27;</span>) <span class="comment"># 画关于xy的图像,颜色为red 线宽为1.0,样式是&#x27;--&#x27;</span></span><br><span class="line">plt.xlim((<span class="number">-1</span>, <span class="number">2</span>))  </span><br><span class="line">plt.ylim((<span class="number">-2</span>, <span class="number">3</span>))  <span class="comment"># 设定y的坐标轴范围</span></span><br><span class="line">plt.xlabel(<span class="string">&#x27;I am x&#x27;</span>)  </span><br><span class="line">plt.ylabel(<span class="string">&#x27;I am y&#x27;</span>)  <span class="comment"># 设定y坐标轴名称</span></span><br><span class="line">new_ticks = np.linspace(<span class="number">-1</span>, <span class="number">2</span>, <span class="number">5</span>)  </span><br><span class="line">plt.xticks(new_ticks)  <span class="comment"># 重新设定x轴的刻度</span></span><br><span class="line">plt.yticks([<span class="number">-2</span>, <span class="number">-1.8</span>, <span class="number">-1</span>, <span class="number">1.22</span>, <span class="number">3</span>],[<span class="string">r&#x27;$really\ bad$&#x27;</span>, <span class="string">r&#x27;$bad$&#x27;</span>, <span class="string">r&#x27;$normal$&#x27;</span>, <span class="string">r&#x27;$good$&#x27;</span>, <span class="string">r&#x27;$really\ good$&#x27;</span>])  <span class="comment"># 设点y轴的刻度并标定名称</span></span><br><span class="line">plt.show()  <span class="comment"># 显示图像</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/d239c418.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://loveran.me/d239c418.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ilario">
+      <meta itemprop="description" content="人生未有期,纵身锦浪里.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="llario的博客`">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
             <a href="/d239c418.html" class="post-title-link" itemprop="url">Git学习笔记</a>
         </h2>
 
@@ -362,127 +483,6 @@
 <p><code>git reflog</code> 查看所有的命令历史  回退后还可以找到之后版本的commit id重置到之后的版本里</p>
 <p><code>git reset HEAD &lt;file&gt;</code> 把暂存区的修改撤销掉（unstage），重新放回工作区(丢弃暂存区修改,保留工作区修改)</p>
 <p><code>git restore filname</code> 把readme撤回到暂存区的状态,不在暂存区就撤回到版本库的状态(丢弃工作区的更改)</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/d239c418.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://loveran.me/d239c418.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Ilario">
-      <meta itemprop="description" content="人生未有期,纵身锦浪里.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="llario的博客`">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/d239c418.html" class="post-title-link" itemprop="url">Matplotlib使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-29 00:00:00" itemprop="dateCreated datePublished" datetime="2020-11-29T00:00:00+08:00">2020-11-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-05 22:03:59" itemprop="dateModified" datetime="2020-12-05T22:03:59+08:00">2020-12-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/d239c418.html" class="post-meta-item leancloud_visitors" data-flag-title="Matplotlib使用" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/d239c418.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/d239c418.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.7k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Matplotlib使用"><a href="#Matplotlib使用" class="headerlink" title="Matplotlib使用"></a>Matplotlib使用</h1><h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>导入模块matplotlib.pyplot和numpy</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
-
-<p>定义窗口并画图</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">x = np.linspace(<span class="number">-3</span>, <span class="number">3</span>, <span class="number">50</span>)  </span><br><span class="line">y = x**<span class="number">2</span></span><br><span class="line">plt.figure(num=<span class="number">3</span>, figsize=(<span class="number">8</span>, <span class="number">5</span>))   <span class="comment"># 生成一个画板 编号为3,尺寸是(8,5)</span></span><br><span class="line">plt.plot(x, y, color=<span class="string">&#x27;red&#x27;</span>, linewidth=<span class="number">1.0</span>, linestyle=<span class="string">&#x27;--&#x27;</span>) <span class="comment"># 画关于xy的图像,颜色为red 线宽为1.0,样式是&#x27;--&#x27;</span></span><br><span class="line">plt.xlim((<span class="number">-1</span>, <span class="number">2</span>))  </span><br><span class="line">plt.ylim((<span class="number">-2</span>, <span class="number">3</span>))  <span class="comment"># 设定y的坐标轴范围</span></span><br><span class="line">plt.xlabel(<span class="string">&#x27;I am x&#x27;</span>)  </span><br><span class="line">plt.ylabel(<span class="string">&#x27;I am y&#x27;</span>)  <span class="comment"># 设定y坐标轴名称</span></span><br><span class="line">new_ticks = np.linspace(<span class="number">-1</span>, <span class="number">2</span>, <span class="number">5</span>)  </span><br><span class="line">plt.xticks(new_ticks)  <span class="comment"># 重新设定x轴的刻度</span></span><br><span class="line">plt.yticks([<span class="number">-2</span>, <span class="number">-1.8</span>, <span class="number">-1</span>, <span class="number">1.22</span>, <span class="number">3</span>],[<span class="string">r&#x27;$really\ bad$&#x27;</span>, <span class="string">r&#x27;$bad$&#x27;</span>, <span class="string">r&#x27;$normal$&#x27;</span>, <span class="string">r&#x27;$good$&#x27;</span>, <span class="string">r&#x27;$really\ good$&#x27;</span>])  <span class="comment"># 设点y轴的刻度并标定名称</span></span><br><span class="line">plt.show()  <span class="comment"># 显示图像</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/d239c418.html#more" rel="contents">
