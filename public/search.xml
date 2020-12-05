@@ -171,10 +171,11 @@
 </ul>
 ]]></content>
       <categories>
-        <category>Git</category>
+        <category>笔记</category>
       </categories>
       <tags>
         <tag>笔记</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -232,11 +233,11 @@
 
 ]]></content>
       <categories>
-        <category>python</category>
-        <category>matplotlib</category>
+        <category>笔记</category>
       </categories>
       <tags>
-        <tag>笔记</tag>
+        <tag>python</tag>
+        <tag>matplotlib</tag>
       </tags>
   </entry>
 </search>
