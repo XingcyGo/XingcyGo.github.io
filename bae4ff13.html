@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"coolxing.top","root":"/","scheme":"Gemini","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"path":"./public/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="RedisNoSQL Not Only SQL 非关系型数据库  四大分类 KV 键值对 Redis 文档型数据库(bson 格式) MongoDB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis">
+<meta property="og:url" content="https://coolxing.top/bae4ff13.html">
+<meta property="og:site_name" content="陈一星的博客">
+<meta property="og:description" content="RedisNoSQL Not Only SQL 非关系型数据库  四大分类 KV 键值对 Redis 文档型数据库(bson 格式) MongoDB">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://coolxing.top/undefined/image-20210311185812-kzlo77p.png">
+<meta property="og:image" content="https://coolxing.top/undefined/image-20210311202359-bi3t8gb.png">
+<meta property="og:image" content="https://coolxing.top/undefined/image-20210311203713-1m5l4bv.png">
+<meta property="og:image" content="https://coolxing.top/undefined/image-20210311204617-d8qsvn3.png">
+<meta property="og:image" content="https://coolxing.top/undefined/image-20210314151704-akofa1o.png">
+<meta property="article:published_time" content="2021-03-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-03-14T12:25:43.611Z">
+<meta property="article:author" content="Ilario">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://coolxing.top/undefined/image-20210311185812-kzlo77p.png">
+
+
+<link rel="canonical" href="https://coolxing.top/bae4ff13.html">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Redis | 陈一星的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">陈一星的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">平平淡淡 终生浪漫</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis"><span class="nav-number">1.</span> <span class="nav-text">Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NoSQL"><span class="nav-number">1.1.</span> <span class="nav-text">NoSQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E5%A4%A7%E5%88%86%E7%B1%BB"><span class="nav-number">1.1.1.</span> <span class="nav-text">四大分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.2.</span> <span class="nav-text">特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E7%89%B9%E6%80%A7"><span class="nav-number">1.2.</span> <span class="nav-text">Redis 特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.3.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.3.1.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2-String"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">字符串(String)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%93%88%E5%B8%8C-Hash"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">哈希(Hash)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%97%E8%A1%A8-List"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">列表(List)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%86%E5%90%88-Set"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">集合(Set)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88-Sorted-Set"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">有序集合(Sorted Set)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">1.3.2.</span> <span class="nav-text">通用指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#key%E9%80%9A%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">key通用指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#key%E6%89%A9%E5%B1%95%E6%93%8D%E4%BD%9C-%E6%97%B6%E6%95%88%E6%93%8D%E4%BD%9C"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">key扩展操作(时效操作)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#key%E6%89%A9%E5%B1%95%E6%93%8D%E4%BD%9C"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">key扩展操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#key%E5%85%B6%E4%BB%96%E6%93%8D%E4%BD%9C"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">key其他操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%9A%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">1.3.3.</span> <span class="nav-text">数据库通用操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jedis%E6%93%8D%E4%BD%9CRedis%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.4.</span> <span class="nav-text">Jedis操作Redis数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis%E6%8C%81%E4%B9%85%E5%8C%96"><span class="nav-number">1.5.</span> <span class="nav-text">Redis持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDB%E4%BF%9D%E5%AD%98"><span class="nav-number">1.5.1.</span> <span class="nav-text">RDB保存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOF%E4%BF%9D%E5%AD%98"><span class="nav-number">1.5.2.</span> <span class="nav-text">AOF保存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1"><span class="nav-number">1.6.</span> <span class="nav-text">事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5"><span class="nav-number">1.7.</span> <span class="nav-text">Redis删除策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5"><span class="nav-number">1.7.1.</span> <span class="nav-text">删除策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%90%E5%87%BA%E7%AD%96%E7%95%A5"><span class="nav-number">1.7.2.</span> <span class="nav-text">逐出策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.8.</span> <span class="nav-text">高级数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bitmaps"><span class="nav-number">1.8.1.</span> <span class="nav-text">Bitmaps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GEO"><span class="nav-number">1.8.2.</span> <span class="nav-text">GEO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HyperLogLog"><span class="nav-number">1.8.3.</span> <span class="nav-text">HyperLogLog</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6"><span class="nav-number">1.9.</span> <span class="nav-text">主从复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis%E5%93%A8%E5%85%B5"><span class="nav-number">1.10.</span> <span class="nav-text">Redis哨兵</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ilario</p>
+  <div class="site-description" itemprop="description">人生未有期,纵身锦浪里.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-nd.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </section>
+        <div class="back-to-top animated">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://coolxing.top/bae4ff13.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ilario">
+      <meta itemprop="description" content="人生未有期,纵身锦浪里.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈一星的博客">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Redis
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-03-14 00:00:00 / 修改时间：20:25:43" itemprop="dateCreated datePublished" datetime="2021-03-14T00:00:00+08:00">2021-03-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/bae4ff13.html" class="post-meta-item leancloud_visitors" data-flag-title="Redis" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/bae4ff13.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/bae4ff13.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h2><ul>
+<li>Not Only SQL 非关系型数据库</li>
+</ul>
+<h3 id="四大分类"><a href="#四大分类" class="headerlink" title="四大分类"></a>四大分类</h3><ol>
+<li>KV 键值对 Redis</li>
+<li>文档型数据库(bson 格式) MongoDB<a id="more"></a></li>
+<li>列存储数据库 HBase 分布式文件系统</li>
+<li>图关系数据库 Neo4j InfoGrid</li>
+</ol>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
+<li>可扩容,可伸缩</li>
+<li>大数据量下高性能</li>
+<li>灵活的数据结构</li>
+<li>高可用</li>
+</ul>
+<h2 id="Redis-特性"><a href="#Redis-特性" class="headerlink" title="Redis 特性"></a>Redis 特性</h2><p>Redis(REmote Dictionary Server) 远程字典服务</p>
+<blockquote>
+<p>作用</p>
+</blockquote>
+<ul>
+<li>热点数据加速查询, 比如热点商品,热点新闻等</li>
+<li>任务队列, 比如秒杀/抢购/购票排队</li>
+<li>即时信息查询, 比如排行榜/访问统计/在线人数统计</li>
+<li>时效性信息控制, 比如验证码控制</li>
+<li>分布式数据共享, 比如分布式集群架构中的session分离</li>
+<li>消息队列</li>
+<li>分布式锁</li>
+</ul>
+<blockquote>
+<p>特性</p>
+</blockquote>
+<ul>
+<li>数据之间没有必然的关联关系</li>
+<li>内部采用单线程进行工作</li>
+<li>高性能</li>
+<li>多数据类型支持</li>
+<li>持久化支持,可以进行数据灾难恢复</li>
+</ul>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><ul>
+<li>字符串(String)</li>
+<li>哈希(Hash)</li>
+<li>列表(List)</li>
+<li>集合(Set)</li>
+<li>有序集合(Sorted Set)</li>
+</ul>
+<h4 id="字符串-String"><a href="#字符串-String" class="headerlink" title="字符串(String)"></a>字符串(String)</h4><p>存储单个数据, 一个空间存储一个数据, 如果数据用整数的形式, 可以作为数字操作</p>
+<p>格式: <code>key:value</code></p>
+<ul>
+<li><p>添加/修改数据: <code>set key value</code></p>
+</li>
+<li><p>获取数据: <code>get key</code></p>
+</li>
+<li><p>删除数据: <code>del key</code></p>
+</li>
+<li><p>添加获取多个数据: <code>mset/mget</code></p>
+</li>
+<li><p>获取字符数据个数(字符串长度): <code>strlen key</code></p>
+</li>
+<li><p>追加信息(原始信息存在-追加, 否则新建): <code>append key value</code></p>
+</li>
+<li><p>数值数据增加指定范围</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">incr key</span><br><span class="line">incrby key increment</span><br><span class="line">incrbyfloat key increment</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>数值类型最大值:Long.MAX_VALUE, 如果原始数据无法转化成数值或者超过了数值上限,将会报错</p>
+</blockquote>
+</li>
+<li><p>数值减少指定范围的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">decr key</span><br><span class="line">decrby key increment</span><br></pre></td></tr></table></figure></li>
+<li><p>设置数值的生命周期</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setex key second value</span><br><span class="line">psetex key milliseconds value</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="哈希-Hash"><a href="#哈希-Hash" class="headerlink" title="哈希(Hash)"></a>哈希(Hash)</h4><p>一个存储空间保存多个键值对数据,底层使用哈希表结构实现数据存储</p>
+<img data-src="/undefined/image-20210311185812-kzlo77p.png" class="" title="image.png">
+
+<ul>
+<li>添加/修改数据: <code>hset key field value</code></li>
+<li>获取数据: <code>hget key field</code>  <code>hgetall key</code></li>
+<li>删除数据: <code>hdel key field1 [field2]</code></li>
+<li>添加/修改多个数据: <code>hmset key field1 value1 field2 value2 ..</code></li>
+<li>获取多个数据: <code>hmget key field1 field2 ...</code></li>
+<li>获取哈希表中字段的数量: <code>hlen key</code></li>
+<li>获取哈希表中是否存在指定的字段 <code>hexists key field</code></li>
+<li>获取哈希表中所有的字段名或者字段值: <code>hkeys key</code> <code>hvals key</code></li>
+<li>设置指定字段的数值数据增加指定范围的值: <code>hincrby key field increment</code> <code>hincrbyfloat key field increment</code></li>
+<li>添加数据,如果已经存在就会添加失败: <code>hsetnx key field value</code></li>
+</ul>
+<blockquote>
+<ul>
+<li>哈希类型下的value只能存储字符串 不能嵌套</li>
+<li>每个hash可以存储2**32 - 1 个键值对</li>
+</ul>
+</blockquote>
+<h4 id="列表-List"><a href="#列表-List" class="headerlink" title="列表(List)"></a>列表(List)</h4><p>一个存储空间保存多个数据,且通过数据可以体现进入顺序,底层通过双向链表实现</p>
+<img data-src="/undefined/image-20210311202359-bi3t8gb.png" class="" title="image.png">
+
+<ul>
+<li><p>添加/修改数据:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lpush key value1 [value2] ...</span><br><span class="line">rpush key value1 [value2] ...</span><br></pre></td></tr></table></figure></li>
+<li><p>获取数据:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lrange key start stop</span><br><span class="line">lindex key index</span><br><span class="line">llen key</span><br></pre></td></tr></table></figure></li>
+<li><p>获取并移除数据:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lpop key</span><br><span class="line">rpop key</span><br></pre></td></tr></table></figure></li>
+<li><p>限定时间内获取并移除数据(阻塞):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">blpop key1 [key2] timeout</span><br><span class="line">brpop key1 [key2] timeout</span><br><span class="line">brpoplpish source destination timeout &#x2F;&#x2F;移除列表的最后一个元素，并将该元素添加到另一个列表并返回。</span><br></pre></td></tr></table></figure></li>
+<li><p>移除指定元素:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrem key count value</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<p>list中保存的数据都是string类型,最多2**32 -1</p>
+<p>list有索引,但一般作为队列或者栈使用,结束索引为-1</p>
+<p>list可以进行分页操作, limit</p>
+</blockquote>
+<h4 id="集合-Set"><a href="#集合-Set" class="headerlink" title="集合(Set)"></a>集合(Set)</h4><p>用来存储大量数据, 也便于查询, 结构与hash完全相同, 仅存储(hash)键,而且值不允许重复</p>
+<img data-src="/undefined/image-20210311203713-1m5l4bv.png" class="" title="image.png">
+
+<ul>
+<li><p>添加数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sadd key member1 [member2] ...</span><br></pre></td></tr></table></figure></li>
+<li><p>获取全部数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smembers key</span><br></pre></td></tr></table></figure></li>
+<li><p>删除数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">srem key member1 [member2] ...</span><br></pre></td></tr></table></figure></li>
+<li><p>获取集合数据总量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scard key</span><br></pre></td></tr></table></figure></li>
+<li><p>判断集合中是否包含指定数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sismember key member</span><br></pre></td></tr></table></figure></li>
+<li><p>随机获取集合中指定数量的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">srandmember key [count]</span><br></pre></td></tr></table></figure></li>
+<li><p>随机获取集合中的某个数据并将该数据移出集合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spop key [count]</span><br></pre></td></tr></table></figure></li>
+<li><p>求两个集合的交集/并集/差集</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sinter key1 [key2]</span><br><span class="line">sunion key1 [key2]</span><br><span class="line">sdiff key1 [key2]</span><br></pre></td></tr></table></figure></li>
+<li><p>求两个集合的交集/并集/差集并保存的指定集合里</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sinterstore destination key1 [key2]</span><br><span class="line">sunionstore destination key1 [key2]</span><br><span class="line">sdiffstore destination key1 [key2]</span><br></pre></td></tr></table></figure></li>
+<li><p>将指定数据中原始集合移动到目标集合里面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smove source destination member</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="有序集合-Sorted-Set"><a href="#有序集合-Sorted-Set" class="headerlink" title="有序集合(Sorted Set)"></a>有序集合(Sorted Set)</h4><p>在set的存储结构基础上添加可排序字段</p>
+<img data-src="/undefined/image-20210311204617-d8qsvn3.png" class="" title="image.png">
+
+<ul>
+<li><p>添加数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zadd key score1 member1 [score2 member2]</span><br></pre></td></tr></table></figure></li>
+<li><p>获取全部数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zrange key start stop [WITHSCORES]</span><br><span class="line">zrevrange key start stop [WITHSCORES]</span><br></pre></td></tr></table></figure></li>
+<li><p>删除数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zrem key member [member …]</span><br></pre></td></tr></table></figure></li>
+<li><p>按条件获取数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zrangebyscore key min max [WITHSCORES] [LIMIT]</span><br><span class="line">zrevrangebyscore key max min [WITHSCORES]</span><br></pre></td></tr></table></figure></li>
+<li><p>条件删除数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zremrangebyrank key start stop</span><br><span class="line">zremrangebyscore key min max</span><br></pre></td></tr></table></figure></li>
+<li><p>获取集合数据总量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zcard key</span><br><span class="line">zcount key min max</span><br></pre></td></tr></table></figure></li>
+<li><p>集合交并操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zinterstore destination numkeys key [key …]</span><br><span class="line">zunionstore destination numkeys key [key …]</span><br></pre></td></tr></table></figure></li>
+<li><p>获取数据对应的索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zrank key member</span><br><span class="line">zrevrank key member</span><br></pre></td></tr></table></figure></li>
+<li><p>score值获取与修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zscore key member</span><br><span class="line">zincrby key increment member</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="通用指令"><a href="#通用指令" class="headerlink" title="通用指令"></a>通用指令</h3><h4 id="key通用指令"><a href="#key通用指令" class="headerlink" title="key通用指令"></a>key通用指令</h4><ul>
+<li><p>删除指定key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">del key</span><br></pre></td></tr></table></figure></li>
+<li><p>获取key是否存在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exists key</span><br></pre></td></tr></table></figure></li>
+<li><p>获取key的类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type key</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="key扩展操作-时效操作"><a href="#key扩展操作-时效操作" class="headerlink" title="key扩展操作(时效操作)"></a>key扩展操作(时效操作)</h4><ul>
+<li><p>为指定key设置有效期</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">expire key seconds</span><br><span class="line">pexpire key milliseconds</span><br><span class="line">expireat key timestamp</span><br><span class="line">pexpireat key millinseconds-timestamp</span><br></pre></td></tr></table></figure></li>
+<li><p>获取key有效时间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ttl key</span><br><span class="line">pttl key</span><br></pre></td></tr></table></figure></li>
+<li><p>切换key从时效性转换为永久性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">persist key</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="key扩展操作"><a href="#key扩展操作" class="headerlink" title="key扩展操作"></a>key扩展操作</h4><ul>
+<li><p>查询key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keys pattern</span><br></pre></td></tr></table></figure>
+
+<img data-src="/undefined/image-20210314151704-akofa1o.png" class="" title="image.png">
+
+</li>
+</ul>
+<h4 id="key其他操作"><a href="#key其他操作" class="headerlink" title="key其他操作"></a>key其他操作</h4><ul>
+<li><p>为key改名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rename key newkey &#x2F;&#x2F;如果已经有newkey的数据，直接覆盖</span><br><span class="line">renamenx key newkey &#x2F;&#x2F;如果已经有，则失败</span><br></pre></td></tr></table></figure></li>
+<li><p>对所有key排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort</span><br></pre></td></tr></table></figure></li>
+<li><p>其他key通用操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help @generic</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="数据库通用操作"><a href="#数据库通用操作" class="headerlink" title="数据库通用操作"></a>数据库通用操作</h3><p>Redis为每个服务器提供16个数据库, 编号从0-15</p>
+<p>每个数据库之间相互独立</p>
+<ul>
+<li><p>切换数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select index</span><br></pre></td></tr></table></figure></li>
+<li><p>其他操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">quit</span><br><span class="line">ping</span><br><span class="line">echo message</span><br></pre></td></tr></table></figure></li>
+<li><p>数据移动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">move key db</span><br></pre></td></tr></table></figure></li>
+<li><p>数据清除</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dbsize</span><br><span class="line">flushdb</span><br><span class="line">flushall</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="Jedis操作Redis数据库"><a href="#Jedis操作Redis数据库" class="headerlink" title="Jedis操作Redis数据库"></a>Jedis操作Redis数据库</h2><p>略</p>
+<h2 id="Redis持久化"><a href="#Redis持久化" class="headerlink" title="Redis持久化"></a>Redis持久化</h2><ul>
+<li>RDB 快照形式,全量保存</li>
+<li>AOF 存储操作指令 增量保存</li>
+</ul>
+<h3 id="RDB保存"><a href="#RDB保存" class="headerlink" title="RDB保存"></a>RDB保存</h3><p>命令:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">save  &#x2F;&#x2F;手动执行一次保存</span><br><span class="line">bgsave  &#x2F;&#x2F;手动执行后进入后台执行操作</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>优点</p>
+<blockquote>
+<p>二进制文件,存储效率高</p>
+<p>存储的是某个时间的数据快照,适合数据备份,全量复制<br>恢复速度快</p>
+</blockquote>
+</li>
+<li><p>缺点</p>
+<blockquote>
+<p>无法做到实时持久化,容易丢失数据<br>每次运行都要fork操作创建子进程,牺牲部分性能<br>不同版本格式不兼容</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="AOF保存"><a href="#AOF保存" class="headerlink" title="AOF保存"></a>AOF保存</h3><ul>
+<li>AOF持久化：以独立日志的方式记录每次写命令，重启时再重新执行AOF文件中命令达到恢复数据的目的。与RDB相比可以简单描述为改记录数据产生的过程</li>
+<li>AOF的主要作用是解决了数据持久化的实时性，目前已经是Redis持久化的主流方式</li>
+</ul>
+<p>AOF写数据三种策略<br>always(每次)<br>每次写入操作均同步到AOF文件中，数据零误差，性能较低<br>everysec(每秒)<br>每秒将缓冲区中的指令同步到AOF文件中，数据准确性高，性能较高<br>再系统突然当即的情况下丢失1秒内的数据<br>no(系统控制)<br>由操作系统每次同步到AOF文件的周期，整体过程不可控</p>
+<ul>
+<li><p>AOF重写</p>
+<blockquote>
+<p>将同样一个数据的若干个命令执行结果转换为最终结果数据对应的指令进行记录,压缩文件体积</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><ul>
+<li><p>开启事务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multi</span><br></pre></td></tr></table></figure></li>
+<li><p>执行事务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec</span><br></pre></td></tr></table></figure></li>
+<li><p>取消事务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">discard</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<p>事务过程中发生语法错误时,整体事务不会被执行<br>命令正确但是运行时发生错误时,能够执行的会执行,发生错误的不会执行,运行错误的那些指令无法自动回归,需要提前备份手动回滚</p>
+</blockquote>
+<h2 id="Redis删除策略"><a href="#Redis删除策略" class="headerlink" title="Redis删除策略"></a>Redis删除策略</h2><p>过期数据的删除</p>
+<h3 id="删除策略"><a href="#删除策略" class="headerlink" title="删除策略"></a>删除策略</h3><p>数据状态:</p>
+<ul>
+<li>xx: 有时效性的uuju</li>
+<li>-1: 永久有效的数据</li>
+<li>-2: 过期但是没有删除的数据,或者没定义的数据</li>
+</ul>
+<p>数据删除策略:</p>
+<ol>
+<li>定时删除: 过期时间到达时立刻删除</li>
+<li>惰性删除: 数据下次被访问时删除</li>
+<li>定期删除: 周期性的轮询数据,随机抽取,根据过期数据的比例决定是否删除</li>
+</ol>
+<p>内存不足时的删除策略</p>
+<h3 id="逐出策略"><a href="#逐出策略" class="headerlink" title="逐出策略"></a>逐出策略</h3><ol>
+<li>volatile-lru：挑选最近最少使用的数据淘汰</li>
+<li>volatile-lfu：挑选最近使用次数最少的数据淘汰</li>
+<li>volatile-ttl ：挑选将要过期的数据淘汰</li>
+<li>volatile-random：任意选择数据淘汰</li>
+<li>allkeys-lru：挑选最近最少使用的数据淘汰</li>
+<li>allkeys-lfu：挑选最近使用次数最少的数据淘汰</li>
+<li>allkeys-random：任意选择数据淘汰,放弃数据驱逐</li>
+<li>no-enviction（驱逐）：禁止驱逐数据（redis4.0默认策略），会引发错误OOM（OutOfMemory）</li>
+</ol>
+<h2 id="高级数据结构"><a href="#高级数据结构" class="headerlink" title="高级数据结构"></a>高级数据结构</h2><h3 id="Bitmaps"><a href="#Bitmaps" class="headerlink" title="Bitmaps"></a>Bitmaps</h3><h3 id="GEO"><a href="#GEO" class="headerlink" title="GEO"></a>GEO</h3><h3 id="HyperLogLog"><a href="#HyperLogLog" class="headerlink" title="HyperLogLog"></a>HyperLogLog</h3><h2 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h2><h2 id="Redis哨兵"><a href="#Redis哨兵" class="headerlink" title="Redis哨兵"></a>Redis哨兵</h2>
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Ilario
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://coolxing.top/bae4ff13.html" title="Redis">https://coolxing.top/bae4ff13.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+              <a href="/tags/Redis/" rel="tag"># Redis</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/adf5c49.html" rel="prev" title="Vue笔记">
+                  <i class="fa fa-chevron-left"></i> Vue笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/c24675b4.html" rel="next" title="MySQL">
+                  MySQL <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+      
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ilario</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">25k</span>
+</div>
+
+      
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+<script>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      const visitors = document.querySelector('.leancloud_visitors');
+      const url = decodeURI(visitors.id);
+      const title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            const counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              Counter('post', '/classes/Counter', { title, url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.error('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      const visitors = document.querySelectorAll('.leancloud_visitors');
+      const entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            const target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    const { app_id, app_key, server_url } = {"enable":true,"app_id":"0jsBIKU2PKiYrLoDJxjuvzCh-gzGzoHsz","app_key":"ouvftHo9F0wi3APMbqKyzitk","server_url":null,"security":false};
+    function fetchData(api_server) {
+      const Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    const api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1.15.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<script>
+NexT.utils.loadComments('#valine-comments', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
+    new Valine(Object.assign({
+      el  : '#valine-comments',
+      path: location.pathname,
+    }, {"enable":true,"appId":"0jsBIKU2PKiYrLoDJxjuvzCh-gzGzoHsz","appKey":"ouvftHo9F0wi3APMbqKyzitk","placeholder":"来聊聊ヾ(≧▽≦*)o","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":false,"requiredFields":[]}
+    ));
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
