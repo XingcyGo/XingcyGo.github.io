@@ -221,7 +221,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -230,7 +230,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -372,11 +372,11 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ax = plt.gca() 获得坐标轴对象</span><br><span class="line">ax.spines[‘right’].set_color(‘none’)</span><br><span class="line">ax.spines[‘top’].set_color(‘none’)   <span class="comment">#  将右边和上面的边框隐藏</span></span><br><span class="line">ax.xaxis.set_ticks_position(‘bottom’) </span><br><span class="line">ax.yaxis.set_ticks_position(‘left’)  <span class="comment">#设定x轴的刻度显示在下面,y轴的刻度显示在左边</span></span><br><span class="line">ax.spines[‘bottom’].set_position((‘data’, <span class="number">0</span>)) <span class="comment"># data表示通过值来设置x轴的位置，将x轴绑定在y=0的位置</span></span><br><span class="line">ax.spines[‘left’].set_position((‘data’, <span class="number">0</span>))<span class="comment"># 设定x,y轴在(0,0)轴相交</span></span><br><span class="line"><span class="comment"># 或者 ax.spines[&#x27;left&#x27;].set_position((&#x27;axes&#x27;,0.5)) axes表示以百分比的形式设置轴的位置，即将y轴绑定在x轴50%的位置，也就是x轴的中点</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="绘制子图"><a href="#绘制子图" class="headerlink" title="绘制子图"></a>绘制子图</h2><p>在matplotlib中，<code>整个图像</code>为一个<code>Figure</code>对象。在Figure对象中可以包含一个或者多个<code>Axes</code>对象。每个Axes(ax)对象都是一个拥有自己坐标系统的<strong>绘图区域</strong>。所属关系如下：</p>
-<img data-src="/406fba42/5Vfd6AY.png" class="" title="img">
+<img src="/406fba42/5Vfd6AY.png" class="" title="img">
 
 <p>一个”Figure”意味着用户交互的整个窗口。在这个figure中容纳着”subplots”。</p>
 <p>当我们调用plot时，matplotlib会调用<code>gca()</code>获取当前的axes绘图区域，而且<code>gca</code>反过来调用<code>gcf()</code>来获得当前的figure。如果figure为空，它会自动调用<code>figure()</code>生成一个figure, 严格的讲，是生成<code>subplots(111)</code>。</p>
-<img data-src="/406fba42/Xt03c7u.png" class="" title="img">
+<img src="/406fba42/Xt03c7u.png" class="" title="img">
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>) <span class="comment"># 会将原始的图像切割成2个子图像，是2行1列，并将现在的操作位置转到第一个子图上，这样便实现了绘制子图的方法。 。(第一个参数代表子图的行数；第二个参数代表该行图像的列数； 第三个参数代表每行的第几个图像。)</span></span><br><span class="line">plt.plot(...)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>) <span class="comment"># 将现在的操作位置转到第二个子图上，开始绘制第二个子图。</span></span><br><span class="line">plt.plot(...)</span><br></pre></td></tr></table></figure>
 
@@ -513,7 +513,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">25k</span>
+    <span title="站点总字数">29k</span>
 </div>
 
       
