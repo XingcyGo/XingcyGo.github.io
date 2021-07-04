@@ -288,7 +288,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-07-04 00:00:00 / 修改时间：14:13:23" itemprop="dateCreated datePublished" datetime="2021-07-04T00:00:00+08:00">2021-07-04</time>
+              <time title="创建时间：2021-07-04 00:00:00 / 修改时间：14:17:30" itemprop="dateCreated datePublished" datetime="2021-07-04T00:00:00+08:00">2021-07-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -349,102 +349,14 @@
 <p>Hello World ~</p>
 </blockquote>
 <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Hello, world!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="常见编程概念"><a href="#常见编程概念" class="headerlink" title="常见编程概念"></a>常见编程概念</h2><h3 id="变量与可变性"><a href="#变量与可变性" class="headerlink" title="变量与可变性"></a>变量与可变性</h3><p>使用<code>let</code>声明变量,变量默认不可变,使用<code>mut</code>使可变</p>
-<p>重复声明变量会发生变量遮罩(shadowing)</p>
-<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><h4 id="标量型"><a href="#标量型" class="headerlink" title="标量型"></a>标量型</h4><h5 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h5><table>
-<thead>
-<tr>
-<th align="left">长度</th>
-<th align="left">有符号</th>
-<th align="left">无符号</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">8-bit</td>
-<td align="left"><code>i8</code></td>
-<td align="left"><code>u8</code></td>
-</tr>
-<tr>
-<td align="left">16-bit</td>
-<td align="left"><code>i16</code></td>
-<td align="left"><code>u16</code></td>
-</tr>
-<tr>
-<td align="left">32-bit</td>
-<td align="left"><code>i32</code>(默认)</td>
-<td align="left"><code>u32</code></td>
-</tr>
-<tr>
-<td align="left">64-bit</td>
-<td align="left"><code>i64</code></td>
-<td align="left"><code>u64</code></td>
-</tr>
-<tr>
-<td align="left">128-bit</td>
-<td align="left"><code>i128</code></td>
-<td align="left"><code>u128</code></td>
-</tr>
-<tr>
-<td align="left">arch(依赖于运行时计算机架构)</td>
-<td align="left"><code>isize</code></td>
-<td align="left"><code>usize</code></td>
-</tr>
-</tbody></table>
-<h5 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h5><p><code>f32</code>和<code>f64</code>   推荐<code>f64</code></p>
-<h5 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h5><p><code>true</code> 和<code>false</code> </p>
-<h5 id="字符类型"><a href="#字符类型" class="headerlink" title="字符类型"></a>字符类型</h5><p><code>char</code>  使用Unicode编码</p>
-<h4 id="复合类型"><a href="#复合类型" class="headerlink" title="复合类型"></a>复合类型</h4><p>Rust的复合类型都是异构的</p>
-<h5 id="元组-turple"><a href="#元组-turple" class="headerlink" title="元组 ( turple )"></a>元组 ( turple )</h5><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> tup: (<span class="built_in">i32</span>, <span class="built_in">f64</span>, <span class="built_in">u8</span>) = (<span class="number">500</span>, <span class="number">6.4</span>, <span class="number">1</span>); <span class="comment">//指定类型创建元组</span></span><br><span class="line"><span class="keyword">let</span> (x, y, z) = tup; <span class="comment">//解构</span></span><br><span class="line"><span class="keyword">let</span> five_hundred = tup.<span class="number">0</span>; <span class="comment">//指定索引访问</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="数组-array"><a href="#数组-array" class="headerlink" title="数组 ( array )"></a>数组 ( array )</h5><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a: [<span class="built_in">i32</span>; <span class="number">5</span>] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]; <span class="comment">//指定类型和各个位置元素的值</span></span><br><span class="line"><span class="keyword">let</span> first = a[<span class="number">0</span>]; <span class="comment">//按索引访问</span></span><br><span class="line"><span class="keyword">let</span> b = [<span class="number">3</span>; <span class="number">5</span>]; <span class="comment">//5个3 [T;num]</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>使用关键字<code>fn</code>声明函数</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">five</span></span>() -&gt; <span class="built_in">i32</span> &#123;</span><br><span class="line">    <span class="number">5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>语句与表达式: </p>
-<p>语句是一条执行的命令,以分号结束. 表达式是一个值/字面量, 语句块默认以最后的表达式作为返回值</p>
-</blockquote>
-<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>使用<code>//</code>作为单行注释,使用<code>/* */</code>作为多行注释   </p>
-<p>文档注释 <strong>待补充</strong></p>
-<h3 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h3><h4 id="if-条件表达式"><a href="#if-条件表达式" class="headerlink" title="if 条件表达式"></a><code>if</code> 条件表达式</h4><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> number % <span class="number">4</span> == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;number is divisible by 4&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> number % <span class="number">3</span> == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;number is divisible by 3&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;number is not divisible by 4, 3, or 2&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> number = <span class="keyword">if</span> condition &#123; <span class="number">5</span> &#125; <span class="keyword">else</span> &#123; <span class="number">6</span> &#125;;  <span class="comment">//if表达式有返回值</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h4><h5 id="loop"><a href="#loop" class="headerlink" title="loop"></a><code>loop</code></h5><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">loop</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;again!&quot;</span>);  <span class="comment">//无限循环</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> result = <span class="keyword">loop</span> &#123;</span><br><span class="line">        counter += <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> counter == <span class="number">10</span> &#123;</span><br><span class="line">            <span class="keyword">break</span> counter * <span class="number">2</span>;  <span class="comment">//返回值</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
-
-<h5 id="while"><a href="#while" class="headerlink" title="while"></a><code>while</code></h5><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> number != <span class="number">0</span> &#123;</span><br><span class="line">       <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;!&quot;</span>, number);</span><br><span class="line">       number = number - <span class="number">1</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="for"><a href="#for" class="headerlink" title="for"></a><code>for</code></h5><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> element <span class="keyword">in</span> a.iter() &#123;</span><br><span class="line">              <span class="keyword">let</span> a = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>];</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;the value is: &#123;&#125;&quot;</span>, element);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> number <span class="keyword">in</span> (<span class="number">1</span>..<span class="number">4</span>).rev() &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;!&quot;</span>, number);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="所有权"><a href="#所有权" class="headerlink" title="所有权"></a>所有权</h2><p>让Rust无需GC的同时实现安全的内存管理</p>
-<h4 id="栈-Stack-和堆-Heap"><a href="#栈-Stack-和堆-Heap" class="headerlink" title="栈(Stack)和堆(Heap)"></a>栈(Stack)和堆(Heap)</h4><p>栈中数据后进先出,所有数据必须已知固定大小,分配内存更快</p>
-<p>堆上的数据是大小可能变化的数据,空间分配灵活但缺乏组织,访问更慢</p>
-<p>调用函数时,函数压入栈,函数中的变量放在堆上</p>
-<h3 id="所有权规则"><a href="#所有权规则" class="headerlink" title="所有权规则"></a>所有权规则</h3><blockquote>
-<ol>
-<li>Rust 中的每一个值都有一个被称为其 <strong>所有者</strong>（<em>owner</em>）的变量。</li>
-<li>值在任一时刻有且只有一个所有者。</li>
-<li>当所有者（变量）离开作用域，这个值将被丢弃。</li>
-</ol>
-</blockquote>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> s = <span class="built_in">String</span>::from(<span class="string">&quot;hello&quot;</span>);  <span class="comment">// s 进入作用域,获得字符串的所有权</span></span><br><span class="line">    takes_ownership(s);             <span class="comment">//s的所有权移动到函数里,s失效</span></span><br><span class="line">         <span class="keyword">let</span> s1 = gives_ownership();         <span class="comment">// s1获得一个字符串的所有权</span></span><br><span class="line">    <span class="keyword">let</span> s2 = <span class="built_in">String</span>::from(<span class="string">&quot;hello&quot;</span>);     <span class="comment">// s2 进入作用域</span></span><br><span class="line">    <span class="keyword">let</span> s3 = takes_and_gives_back(s2);  <span class="comment">// s2 的所有权被转移到函数中,函数转移所有权到s3中</span></span><br><span class="line">&#125; <span class="comment">//s s2 已经没有所有权,没有动作,s1 s3 回收内存</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">takes_ownership</span></span>(some_string: <span class="built_in">String</span>) &#123; <span class="comment">//获得一个字符串的所有权,之后所有权随作用域消失</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, some_string);</span><br><span class="line">&#125;  <span class="comment">// 这里，some_string 移出作用域并调用 `drop` 方法。占用的内存被释放</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">gives_ownership</span></span>() -&gt; <span class="built_in">String</span> &#123;             <span class="comment">// gives_ownership 将返回值移动给调用它的函数</span></span><br><span class="line">    <span class="keyword">let</span> some_string = <span class="built_in">String</span>::from(<span class="string">&quot;hello&quot;</span>); <span class="comment">// some_string 进入作用域.</span></span><br><span class="line">    some_string                              <span class="comment">// 返回 some_string 并移出给调用的函数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回 a_string 并移出给调用的函数</span></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">takes_and_gives_back</span></span>(a_string: <span class="built_in">String</span>) -&gt; <span class="built_in">String</span> &#123;</span><br><span class="line">    a_string</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="引用和借用"><a href="#引用和借用" class="headerlink" title="引用和借用"></a>引用和借用</h3><p><code>&amp;</code> 获取一个变量的值,但不获得它的所有权,称为引用</p>
-<p>获取引用作为函数参数称为 <strong>借用</strong>（<em>borrowing</em>）</p>
-<p>引用默认不可变,只能有一个可变引用或者多个不可变引用,引用必须总是有效的(避免悬垂引用)</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">mut</span> s = <span class="built_in">String</span>::from(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> r1 = &amp;s; <span class="comment">// 没问题</span></span><br><span class="line"><span class="keyword">let</span> r2 = &amp;s; <span class="comment">// 多个不可变引用,没问题</span></span><br><span class="line"><span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125; and &#123;&#125;&quot;</span>, r1, r2); <span class="comment">//引用r1和r2被使用,失效</span></span><br><span class="line"><span class="comment">// 此位置之后 r1 和 r2 不再使用</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">dangle</span></span>() -&gt; &amp;<span class="built_in">String</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> s = <span class="built_in">String</span>::from(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    &amp;s   </span><br><span class="line">&#125;               <span class="comment">//! 作用域结束后s被清理,引用失效,出现悬垂引用,编译器报错</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Slices"><a href="#Slices" class="headerlink" title="Slices"></a>Slices</h3><p><code>String</code>的切片类型是<code>&amp;str</code> ,<code>i32</code>数组的类型是<code>&amp;[i32]</code></p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> s = <span class="built_in">String</span>::from(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> word = first_word(&amp;s[..]);  <span class="comment">//word获得一个不可变引用</span></span><br><span class="line"></span><br><span class="line">    s.clear(); <span class="comment">// 错误! 尝试获得可变引用, 失败, 因为已经有不可变引用</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;the first word is: &#123;&#125;&quot;</span>, word);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">first_word</span></span>(s: &amp;<span class="built_in">str</span>) -&gt; &amp;<span class="built_in">str</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> bytes = s.as_bytes();</span><br><span class="line">    <span class="keyword">for</span> (i, &amp;item) <span class="keyword">in</span> bytes.iter().enumerate() &#123;</span><br><span class="line">        <span class="keyword">if</span> item == <span class="string">b&#x27; &#x27;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> &amp;s[<span class="number">0</span>..i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &amp;s[..]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="结构体-Struct"><a href="#结构体-Struct" class="headerlink" title="结构体 ( Struct )"></a>结构体 ( Struct )</h2><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Rectangle</span></span> &#123;  <span class="comment">//定义结构体</span></span><br><span class="line">    width: <span class="built_in">u32</span>,</span><br><span class="line">    height: <span class="built_in">u32</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">impl</span> Rectangle &#123;   <span class="comment">//定义方法</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">area</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">u32</span> &#123;   <span class="comment">//需要&amp;self,实例方法</span></span><br><span class="line">        <span class="keyword">self</span>.width * <span class="keyword">self</span>.height</span><br><span class="line">    &#125;</span><br><span class="line">      <span class="function"><span class="keyword">fn</span> <span class="title">square</span></span>(size: <span class="built_in">u32</span>) -&gt; Rectangle &#123;  <span class="comment">//不需要&amp;self,关联函数</span></span><br><span class="line">        Rectangle &#123; width: size, height: size &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Color</span></span>(<span class="built_in">i32</span>, <span class="built_in">i32</span>, <span class="built_in">i32</span>);  <span class="comment">//元组结构体</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">WriteMessage</span></span>(<span class="built_in">String</span>); <span class="comment">// 元组结构体</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">QuitMessage</span></span>;<span class="comment">//类单元结构体 (没有字段,实现trait)</span></span><br></pre></td></tr></table></figure>
-
-<p>参数名和字段名相同时可以简写(类似JavaScript),还有<code>..user1</code>的写法也类似</p>
-<h2 id="枚举与模式匹配"><a href="#枚举与模式匹配" class="headerlink" title="枚举与模式匹配"></a>枚举与模式匹配</h2><h3 id="定义枚举"><a href="#定义枚举" class="headerlink" title="定义枚举"></a>定义枚举</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">IpAddrKind</span></span> &#123;</span><br><span class="line">    V4,</span><br><span class="line">    V6,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Message</span></span> &#123;</span><br><span class="line">    Quit,</span><br><span class="line">    Move &#123; x: <span class="built_in">i32</span>, y: <span class="built_in">i32</span> &#125;,</span><br><span class="line">    Write(<span class="built_in">String</span>),</span><br><span class="line">    ChangeColor(<span class="built_in">i32</span>, <span class="built_in">i32</span>, <span class="built_in">i32</span>),</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">impl</span> Message &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">call</span></span>(&amp;<span class="keyword">self</span>) &#123;</span><br><span class="line">        <span class="comment">// 在这里定义方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Option枚举"><a href="#Option枚举" class="headerlink" title="Option枚举"></a>Option枚举</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Option</span></span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="literal">Some</span>(T),</span><br><span class="line">    <span class="literal">None</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/d2bf970.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -489,10 +401,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-03-14 00:00:00 / 修改时间：20:28:24" itemprop="dateCreated datePublished" datetime="2021-03-14T00:00:00+08:00">2021-03-14</time>
+              <time title="创建时间：2021-03-14 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-14T00:00:00+08:00">2021-03-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-04 14:18:01" itemprop="dateModified" datetime="2021-07-04T14:18:01+08:00">2021-07-04</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -548,9 +466,6 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><h2 id="1-七大设计原则"><a href="#1-七大设计原则" class="headerlink" title="1 七大设计原则"></a>1 七大设计原则</h2><h3 id="1-1单一职责原则"><a href="#1-1单一职责原则" class="headerlink" title="1.1单一职责原则"></a>1.1单一职责原则</h3><p>每个类只负责一个职责</p>
-<h3 id="1-2接口隔离原则"><a href="#1-2接口隔离原则" class="headerlink" title="1.2接口隔离原则"></a>1.2接口隔离原则</h3><p>一个类对另一个类(接口的实现)的依赖应该建立在最小的接口上</p>
-<h3 id="1-3依赖倒转-倒置-原则"><a href="#1-3依赖倒转-倒置-原则" class="headerlink" title="1.3依赖倒转(倒置)原则"></a>1.3依赖倒转(倒置)原则</h3><p>上层不能依赖于下层,他们都应该依赖于抽象(面向接口编程)</p>
-<h3 id="1-4里式替换原则"><a href="#1-4里式替换原则" class="headerlink" title="1.4里式替换原则"></a>1.4里式替换原则</h3>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/6569080d.html#more" rel="contents">
@@ -603,10 +518,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-03-14 00:00:00 / 修改时间：20:28:24" itemprop="dateCreated datePublished" datetime="2021-03-14T00:00:00+08:00">2021-03-14</time>
+              <time title="创建时间：2021-03-14 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-14T00:00:00+08:00">2021-03-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-04 14:18:48" itemprop="dateModified" datetime="2021-07-04T14:18:48+08:00">2021-07-04</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -662,9 +583,11 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="MySQL-笔记"><a href="#MySQL-笔记" class="headerlink" title="MySQL 笔记"></a>MySQL 笔记</h1><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
-<li>DB DataBase 数据库</li>
-<li>DBMS DataBase Management System 数据库管理系统</li>
-<li>SQL 结构化查询语言
+<li><p>DB DataBase 数据库</p>
+</li>
+<li><p>DBMS DataBase Management System 数据库管理系统</p>
+</li>
+<li><p>SQL 结构化查询语言</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/c24675b4.html#more" rel="contents">
@@ -725,7 +648,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-04 14:12:06" itemprop="dateModified" datetime="2021-07-04T14:12:06+08:00">2021-07-04</time>
+                <time title="修改时间：2021-07-04 14:18:58" itemprop="dateModified" datetime="2021-07-04T14:18:58+08:00">2021-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -784,9 +707,6 @@
           <h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h2><ul>
 <li>Not Only SQL 非关系型数据库</li>
 </ul>
-<h3 id="四大分类"><a href="#四大分类" class="headerlink" title="四大分类"></a>四大分类</h3><ol>
-<li>KV 键值对 Redis</li>
-<li>文档型数据库(bson 格式) MongoDB
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/bae4ff13.html#more" rel="contents">
@@ -847,7 +767,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-14 21:01:30" itemprop="dateModified" datetime="2021-03-14T21:01:30+08:00">2021-03-14</time>
+                <time title="修改时间：2021-07-04 14:19:06" itemprop="dateModified" datetime="2021-07-04T14:19:06+08:00">2021-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -904,11 +824,15 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="Vue-的学习笔记"><a href="#Vue-的学习笔记" class="headerlink" title="Vue 的学习笔记"></a>Vue 的学习笔记</h1><h2 id="Vue-概述"><a href="#Vue-概述" class="headerlink" title="Vue 概述"></a>Vue 概述</h2><h3 id="Vue-的特点"><a href="#Vue-的特点" class="headerlink" title="Vue 的特点"></a>Vue 的特点</h3><ol>
-<li>响应式</li>
-<li>组件化</li>
-<li>数据驱动 视图与数据分离</li>
-<li>渐进式</li>
-<li>MVVM 架构
+<li><p>响应式</p>
+</li>
+<li><p>组件化</p>
+</li>
+<li><p>数据驱动 视图与数据分离</p>
+</li>
+<li><p>渐进式</p>
+</li>
+<li><p>MVVM 架构  </p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/adf5c49.html#more" rel="contents">
@@ -1087,7 +1011,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-14 21:01:01" itemprop="dateModified" datetime="2021-03-14T21:01:01+08:00">2021-03-14</time>
+                <time title="修改时间：2021-07-04 14:18:27" itemprop="dateModified" datetime="2021-07-04T14:18:27+08:00">2021-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1146,9 +1070,6 @@
           <h1 id="Git学习笔记"><a href="#Git学习笔记" class="headerlink" title="Git学习笔记"></a>Git学习笔记</h1><h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h2><p><code>git init</code>  初始化一个空的Git仓库</p>
 <p><code>git add filename</code>  添加文件到git暂存区</p>
 <p><code>git commit -m &quot;提交描述&quot;</code> 把暂存区的文件提交 </p>
-<p><code>git status</code>   查看工作目录,暂存区和版本库的区别状态</p>
-<p><code>git diff</code>  查看文件差异 比较的是上次<code>git add</code>与当前的区别</p>
-<p><code>git diff HEAD -- readme.txt </code>  查看工作区的readme和版本库里的readme的区别</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/d239c418.html#more" rel="contents">
