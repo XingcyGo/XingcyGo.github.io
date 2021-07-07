@@ -633,7 +633,7 @@
   <entry>
     <title>Rust学习笔记</title>
     <url>//d2bf970.html</url>
-    <content><![CDATA[<h1 id="Rust"><a href="#Rust" class="headerlink" title="Rust"></a>Rust</h1><p>系统级语言,无GC,并发安全和内存安全,现代化的包管理工具,开放活跃的社区</p>
+    <content><![CDATA[<p>系统级语言,无GC,并发安全和内存安全,现代化的包管理工具,开放活跃的社区</p>
 <blockquote>
 <p>Hello World ~</p>
 </blockquote>
