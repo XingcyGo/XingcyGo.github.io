@@ -3,7 +3,7 @@
   <entry>
     <title>Design-Patterns</title>
     <url>//6569080d.html</url>
-    <content><![CDATA[<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><h2 id="1-七大设计原则"><a href="#1-七大设计原则" class="headerlink" title="1 七大设计原则"></a>1 七大设计原则</h2><h3 id="1-1单一职责原则"><a href="#1-1单一职责原则" class="headerlink" title="1.1单一职责原则"></a>1.1单一职责原则</h3><p>每个类只负责一个职责</p>
+    <content><![CDATA[<h2 id="1-七大设计原则"><a href="#1-七大设计原则" class="headerlink" title="1 七大设计原则"></a>1 七大设计原则</h2><h3 id="1-1单一职责原则"><a href="#1-1单一职责原则" class="headerlink" title="1.1单一职责原则"></a>1.1单一职责原则</h3><p>每个类只负责一个职责</p>
  <a id="more"></a>
 
 <h3 id="1-2接口隔离原则"><a href="#1-2接口隔离原则" class="headerlink" title="1.2接口隔离原则"></a>1.2接口隔离原则</h3><p>一个类对另一个类(接口的实现)的依赖应该建立在最小的接口上</p>
@@ -53,7 +53,7 @@
   <entry>
     <title>Git学习笔记</title>
     <url>//d239c418.html</url>
-    <content><![CDATA[<h1 id="Git学习笔记"><a href="#Git学习笔记" class="headerlink" title="Git学习笔记"></a>Git学习笔记</h1><h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h2><p><code>git init</code>  初始化一个空的Git仓库</p>
+    <content><![CDATA[<h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h2><p><code>git init</code>  初始化一个空的Git仓库</p>
 <p><code>git add filename</code>  添加文件到git暂存区</p>
 <p><code>git commit -m &quot;提交描述&quot;</code> 把暂存区的文件提交 </p>
 <a id="more"></a>    
@@ -180,14 +180,14 @@
         <category>笔记</category>
       </categories>
       <tags>
-        <tag>笔记</tag>
         <tag>Git</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
     <title>MySQL</title>
     <url>//c24675b4.html</url>
-    <content><![CDATA[<h1 id="MySQL-笔记"><a href="#MySQL-笔记" class="headerlink" title="MySQL 笔记"></a>MySQL 笔记</h1><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+    <content><![CDATA[<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
 <li><p>DB DataBase 数据库</p>
 </li>
 <li><p>DBMS DataBase Management System 数据库管理系统</p>
@@ -328,7 +328,7 @@
   <entry>
     <title>Redis</title>
     <url>//bae4ff13.html</url>
-    <content><![CDATA[<h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h2><ul>
+    <content><![CDATA[<h2 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h2><ul>
 <li>Not Only SQL 非关系型数据库</li>
 </ul>
 <a id="more"></a>
@@ -747,7 +747,7 @@
   <entry>
     <title>Vue笔记</title>
     <url>//adf5c49.html</url>
-    <content><![CDATA[<h1 id="Vue-的学习笔记"><a href="#Vue-的学习笔记" class="headerlink" title="Vue 的学习笔记"></a>Vue 的学习笔记</h1><h2 id="Vue-概述"><a href="#Vue-概述" class="headerlink" title="Vue 概述"></a>Vue 概述</h2><h3 id="Vue-的特点"><a href="#Vue-的特点" class="headerlink" title="Vue 的特点"></a>Vue 的特点</h3><ol>
+    <content><![CDATA[<h2 id="Vue-概述"><a href="#Vue-概述" class="headerlink" title="Vue 概述"></a>Vue 概述</h2><h3 id="Vue-的特点"><a href="#Vue-的特点" class="headerlink" title="Vue 的特点"></a>Vue 的特点</h3><ol>
 <li><p>响应式</p>
 </li>
 <li><p>组件化</p>
@@ -987,7 +987,7 @@
   <entry>
     <title>Matplotlib使用</title>
     <url>//406fba42.html</url>
-    <content><![CDATA[<h1 id="Matplotlib使用"><a href="#Matplotlib使用" class="headerlink" title="Matplotlib使用"></a>Matplotlib使用</h1><h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>导入模块matplotlib.pyplot和numpy</p>
+    <content><![CDATA[<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>导入模块matplotlib.pyplot和numpy</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
 
 <a id="more"></a>  
@@ -1048,6 +1048,18 @@
       <tags>
         <tag>python</tag>
         <tag>matplotlib</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++学习笔记</title>
+    <url>//ad4f1e09.html</url>
+    <content><![CDATA[<h1 id="Coming"><a href="#Coming" class="headerlink" title="Coming"></a>Coming</h1>]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>编程语言</tag>
+        <tag>C++</tag>
       </tags>
   </entry>
 </search>
